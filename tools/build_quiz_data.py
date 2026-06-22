@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 QUESTION_DIR = ROOT / "Question"
 TMP_DIR = ROOT / "tmp" / "pdfs" / "rendered"
 ASSET_QUESTION_DIR = ROOT / "assets" / "questions"
-ASSET_ANSWER_DIR = ROOT / "assets" / "answers"
+ASSET_ANSWER_DIR = TMP_DIR / "answer-crops"
 DATA_DIR = ROOT / "data"
 OUTPUT_JSON = DATA_DIR / "questions.json"
 
@@ -133,7 +133,24 @@ MANUAL_LABEL_FALLBACKS = {
 }
 
 MANUAL_TEXT_FALLBACKS = {
+    "cloud_quiz05_q013": "Option A",
     "cloud_quiz12_q005": "Option D",
+}
+
+MANUAL_PROMPT_FALLBACKS = {
+    "cloud_quiz01_q008": "A cloud engineer wants to run a script that increases the volume storage size if it is below 100GB. Which of the following should the engineer run?",
+    "cloud_quiz01_q039": "An administrator is creating a cron job that shuts down the virtual machines at night to save on costs. Which of the following is the best way to achieve this task?",
+    "cloud_quiz05_q013": "A systems administrator needs to configure a script that will monitor whether an application is healthy and stop the VM if an unsuccessful code is returned. Which of the following scripts should the systems administrator use to achieve this goal?",
+    "cloud_quiz10_q007": "A cloud solutions architect wants to deploy a three-tier web application that requires the minimum amount of operational overhead. Which of the following is the best template given these requirements?",
+    "cloud_quiz12_q005": "A cloud solutions architect needs to deploy a simple, public-facing website with the following requirements: Cost-effective, highly available, self-healing, and secure. Which of the following is the most appropriate template to use?",
+}
+
+MANUAL_MEDIA_FALLBACKS = {
+    "cloud_quiz01_q008": ("assets/media/cloud_quiz01_q008_options.png", "ตัวเลือกสคริปต์ A-D สำหรับข้อ 8"),
+    "cloud_quiz01_q039": ("assets/media/cloud_quiz01_q039_options.png", "ตัวเลือกสคริปต์ A-D สำหรับข้อ 39"),
+    "cloud_quiz05_q013": ("assets/media/cloud_quiz05_q013_options.png", "ตัวเลือกสคริปต์ A-D สำหรับข้อ 13"),
+    "cloud_quiz10_q007": ("assets/media/cloud_quiz10_q007_options.png", "ตัวเลือก template A-D สำหรับข้อ 7"),
+    "cloud_quiz12_q005": ("assets/media/cloud_quiz12_q005_options.png", "ตัวเลือก template A-D สำหรับข้อ 5"),
 }
 
 
@@ -575,6 +592,9 @@ def build_explanations(
 def apply_manual_label_fallbacks(questions: list[dict]) -> None:
     for question in questions:
         item_id = question["id"]
+        question["media"] = []
+        if item_id in MANUAL_PROMPT_FALLBACKS:
+            question["prompt"] = MANUAL_PROMPT_FALLBACKS[item_id]
         if item_id in MANUAL_CHOICE_FALLBACKS:
             question["choices"] = [
                 {"label": label, "text": text}
@@ -590,6 +610,27 @@ def apply_manual_label_fallbacks(questions: list[dict]) -> None:
                 question["correctLabels"],
                 question["correctAnswerText"],
             )
+        if item_id in MANUAL_MEDIA_FALLBACKS:
+            src, alt = MANUAL_MEDIA_FALLBACKS[item_id]
+            question["media"] = [{"type": "image", "src": src, "alt": alt}]
+
+
+def generate_manual_media_assets() -> None:
+    media_dir = ROOT / "assets" / "media"
+    media_dir.mkdir(parents=True, exist_ok=True)
+
+    crops = {
+        "assets/media/cloud_quiz01_q008_options.png": ("assets/questions/cloud_quiz01_p02_c02.png", (18, 72, 650, 518)),
+        "assets/media/cloud_quiz01_q039_options.png": ("assets/questions/cloud_quiz01_p07_c04.png", (18, 74, 415, 740)),
+        "assets/media/cloud_quiz05_q013_options.png": ("assets/questions/cloud_quiz05_p02_c07.png", (18, 86, 1120, 320)),
+        "assets/media/cloud_quiz10_q007_options.png": ("assets/questions/cloud_quiz10_manual_q007.png", (0, 118, 1120, 2475)),
+        "assets/media/cloud_quiz12_q005_options.png": ("assets/questions/cloud_quiz12_p01_c05.png", (18, 230, 1120, 520)),
+    }
+    for dst, (src, box) in crops.items():
+        src_path = ROOT / src
+        if not src_path.exists():
+            continue
+        Image.open(src_path).convert("RGB").crop(box).save(ROOT / dst, optimize=True)
 
 
 async def build() -> None:
@@ -679,8 +720,6 @@ async def build() -> None:
                     "quiz": quiz,
                     "number": number,
                     "sourcePdf": pdf.name,
-                    "questionImage": card.image_path.relative_to(ROOT).as_posix(),
-                    "answerImage": answer.image_path.relative_to(ROOT).as_posix(),
                     "prompt": prompt,
                     "mode": mode,
                     "choices": choices,
@@ -693,6 +732,7 @@ async def build() -> None:
                 }
             )
 
+    generate_manual_media_assets()
     apply_manual_label_fallbacks(questions)
 
     payload = {

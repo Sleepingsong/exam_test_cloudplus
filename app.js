@@ -19,7 +19,7 @@ const els = {
   progressLabel: document.getElementById("progressLabel"),
   questionTitle: document.getElementById("questionTitle"),
   questionPrompt: document.getElementById("questionPrompt"),
-  questionImage: document.getElementById("questionImage"),
+  questionMedia: document.getElementById("questionMedia"),
   choiceList: document.getElementById("choiceList"),
   submitBtn: document.getElementById("submitBtn"),
   revealBtn: document.getElementById("revealBtn"),
@@ -42,7 +42,11 @@ function saveAnswers() {
 }
 
 function normalize(value) {
-  return String(value || "").toLowerCase().replace(/[^a-z0-9+.#/\- ]+/g, " ").replace(/\s+/g, " ").trim();
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9+.#/\- ก-๙]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function applyFilters() {
@@ -69,6 +73,20 @@ function renderStats() {
   els.scoreCount.textContent = done.filter((answer) => answer.correct).length;
 }
 
+function renderMedia(item) {
+  const media = item.media || [];
+  els.questionMedia.innerHTML = "";
+  els.questionMedia.hidden = media.length === 0;
+
+  media.forEach((entry) => {
+    if (entry.type !== "image") return;
+    const img = document.createElement("img");
+    img.src = entry.src;
+    img.alt = entry.alt || "ภาพประกอบคำถาม";
+    els.questionMedia.appendChild(img);
+  });
+}
+
 function render() {
   renderStats();
   if (!state.filtered.length) {
@@ -87,8 +105,8 @@ function render() {
   els.sourceLabel.textContent = `${item.quiz} • ${item.sourcePdf}`;
   els.progressLabel.textContent = `${state.current + 1} / ${state.filtered.length}`;
   els.questionTitle.textContent = `ข้อ ${item.number}`;
-  els.questionPrompt.textContent = item.prompt || "อ่านโจทย์จากภาพต้นฉบับด้านล่าง";
-  els.questionImage.src = item.questionImage;
+  els.questionPrompt.textContent = item.prompt || "อ่านโจทย์จากข้อความและภาพประกอบด้านล่าง";
+  renderMedia(item);
   els.choiceList.innerHTML = "";
 
   item.choices.forEach((choice) => {
@@ -150,8 +168,7 @@ function showResult(item, correct, updateChoices) {
   els.resultBox.className = `result ${correct ? "ok" : "bad"}`;
   els.resultBox.innerHTML = `
     <h3>${correct ? "ตอบถูก" : "ยังไม่ถูก"}</h3>
-    <p><strong>เฉลยจากไฟล์:</strong> ${item.correctAnswerText || item.correctAnswers.join(", ")}</p>
-    <img class="answer-image" src="${item.answerImage}" alt="Official answer crop from source PDF" />
+    <p><strong>เฉลย:</strong> ${item.correctAnswerText || item.correctAnswers.join(", ")}</p>
     <div class="explanations">${explanationHtml}</div>
   `;
   els.resultBox.hidden = false;
