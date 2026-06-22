@@ -7,7 +7,7 @@ const state = {
   activeQuizId: null,
   activeQuizName: "",
   answers: JSON.parse(localStorage.getItem("cloudplus-answers") || "{}"),
-  theme: localStorage.getItem("cloudplus-theme") || "light",
+  theme: localStorage.getItem("cloudplus-theme") || "dark",
 };
 
 const els = {
@@ -25,6 +25,7 @@ const els = {
   progressLabel: document.getElementById("progressLabel"),
   questionTitle: document.getElementById("questionTitle"),
   questionPrompt: document.getElementById("questionPrompt"),
+  selectionHint: document.getElementById("selectionHint"),
   questionMedia: document.getElementById("questionMedia"),
   choiceList: document.getElementById("choiceList"),
   submitBtn: document.getElementById("submitBtn"),
@@ -69,6 +70,27 @@ function hasConfirmedCurrent() {
   return item ? isAnswered(item) : false;
 }
 
+function requiredSelections(item) {
+  return Math.max(1, new Set(item.correctLabels || []).size || (item.mode === "multiple" ? 2 : 1));
+}
+
+function hasEnoughSelections(item) {
+  return state.selected.size === requiredSelections(item);
+}
+
+function clearAnswersFor(items) {
+  items.forEach((item) => delete state.answers[answerKey(item)]);
+  saveAnswers();
+}
+
+function updateSelectionHint(item) {
+  const required = requiredSelections(item);
+  els.selectionHint.textContent =
+    required > 1
+      ? `เลือกคำตอบให้ครบ ${required} ข้อ - เลือกแล้ว ${state.selected.size} / ${required}`
+      : "เลือกคำตอบ 1 ข้อ แล้วกดยืนยัน";
+}
+
 function renderStartScreen() {
   const quizMap = new Map();
   state.all.forEach((item) => {
@@ -105,6 +127,7 @@ function startQuiz(quizId, quizName) {
   state.activeQuizId = quizId;
   state.activeQuizName = quizName;
   state.baseSet = quizId === "all" ? [...state.all] : state.all.filter((item) => item.quizId === quizId);
+  clearAnswersFor(state.baseSet);
   state.current = 0;
   state.selected = new Set();
   els.activeQuizName.textContent = quizName;
@@ -181,10 +204,11 @@ function render() {
   els.progressLabel.textContent = `${state.current + 1} / ${state.filtered.length}`;
   els.questionTitle.textContent = `ข้อ ${item.number}`;
   els.questionPrompt.textContent = item.prompt || "อ่านโจทย์จากข้อความและภาพประกอบด้านล่าง";
+  updateSelectionHint(item);
   renderMedia(item);
   renderChoices(item, Boolean(saved));
 
-  els.submitBtn.disabled = state.selected.size === 0 || Boolean(saved);
+  els.submitBtn.disabled = !hasEnoughSelections(item) || Boolean(saved);
   els.revealBtn.disabled = Boolean(saved);
   els.nextBtn.disabled = state.current >= state.filtered.length - 1 || !hasConfirmedCurrent();
   els.prevBtn.disabled = state.current <= 0;
@@ -197,6 +221,8 @@ function renderChoices(item, locked) {
   const saved = state.answers[answerKey(item)];
   const correctLabels = new Set(item.correctLabels || []);
   const selectedLabels = new Set(saved?.selected || state.selected);
+  const maxSelections = requiredSelections(item);
+  const limitReached = !locked && maxSelections > 1 && selectedLabels.size >= maxSelections;
 
   item.choices.forEach((choice) => {
     const button = document.createElement("button");
@@ -206,7 +232,7 @@ function renderChoices(item, locked) {
     if (selectedLabels.has(choice.label)) button.classList.add("selected");
     if (locked && correctLabels.has(choice.label)) button.classList.add("correct");
     if (locked && selectedLabels.has(choice.label) && !correctLabels.has(choice.label)) button.classList.add("wrong");
-    button.disabled = locked;
+    button.disabled = locked || (limitReached && !selectedLabels.has(choice.label));
     button.innerHTML = `<span class="choice-label">${escapeHtml(choice.label)}</span><span>${escapeHtml(choice.text || `Option ${choice.label}`)}</span>`;
     button.addEventListener("click", () => toggleChoice(item, choice.label));
     els.choiceList.appendChild(button);
@@ -215,13 +241,19 @@ function renderChoices(item, locked) {
 
 function toggleChoice(item, label) {
   if (isAnswered(item)) return;
-  if (item.mode === "multiple") {
-    state.selected.has(label) ? state.selected.delete(label) : state.selected.add(label);
+  const maxSelections = requiredSelections(item);
+  if (maxSelections > 1) {
+    if (state.selected.has(label)) {
+      state.selected.delete(label);
+    } else if (state.selected.size < maxSelections) {
+      state.selected.add(label);
+    }
   } else {
     state.selected = new Set([label]);
   }
   renderChoices(item, false);
-  els.submitBtn.disabled = state.selected.size === 0;
+  updateSelectionHint(item);
+  els.submitBtn.disabled = !hasEnoughSelections(item);
 }
 
 function isCorrect(item) {
@@ -232,7 +264,7 @@ function isCorrect(item) {
 
 function submitAnswer() {
   const item = state.filtered[state.current];
-  if (!item || state.selected.size === 0 || isAnswered(item)) return;
+  if (!item || !hasEnoughSelections(item) || isAnswered(item)) return;
   const correct = isCorrect(item);
   state.answers[answerKey(item)] = { selected: [...state.selected], correct };
   saveAnswers();
