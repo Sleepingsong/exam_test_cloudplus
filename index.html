@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CloudPlus Quiz Practice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">CompTIA Cloud+ Practice</p>
+        <h1>CloudPlus Quiz</h1>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">Dark</button>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar" aria-label="Quiz controls">
+        <label>
+          ชุดข้อสอบ
+          <select id="quizSelect"></select>
+        </label>
+        <label>
+          ค้นหา
+          <input id="searchInput" type="search" placeholder="keyword, answer, source" />
+        </label>
+        <div class="stats">
+          <div><span id="totalCount">0</span><small>ข้อทั้งหมด</small></div>
+          <div><span id="scoreCount">0</span><small>ตอบถูก</small></div>
+          <div><span id="doneCount">0</span><small>ทำแล้ว</small></div>
+        </div>
+        <div class="actions">
+          <button id="prevBtn" type="button">ก่อนหน้า</button>
+          <button id="nextBtn" type="button">ถัดไป</button>
+        </div>
+        <button id="resetBtn" class="ghost" type="button">ล้างคำตอบทั้งหมด</button>
+      </aside>
+
+      <section class="quiz-panel" aria-live="polite">
+        <div id="loading" class="notice">กำลังโหลดข้อสอบ...</div>
+        <article id="questionView" class="question-view" hidden>
+          <div class="question-meta">
+            <span id="sourceLabel"></span>
+            <span id="progressLabel"></span>
+          </div>
+          <h2 id="questionTitle"></h2>
+          <p id="questionPrompt" class="prompt"></p>
+          <figure class="source-image">
+            <img id="questionImage" alt="Cropped question from source PDF" />
+          </figure>
+          <div id="choiceList" class="choices"></div>
+          <div class="actions row">
+            <button id="submitBtn" type="button">ตรวจคำตอบ</button>
+            <button id="revealBtn" class="ghost" type="button">ดูเฉลยจากไฟล์</button>
+          </div>
+          <section id="resultBox" class="result" hidden></section>
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
