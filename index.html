@@ -18,45 +18,57 @@
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">Dark</button>
     </header>
 
-    <main class="layout">
-      <aside class="sidebar" aria-label="Quiz controls">
-        <label>
-          ชุดข้อสอบ
-          <select id="quizSelect"></select>
-        </label>
-        <label>
-          ค้นหา
-          <input id="searchInput" type="search" placeholder="keyword, answer, source" />
-        </label>
-        <div class="stats">
-          <div><span id="totalCount">0</span><small>ข้อทั้งหมด</small></div>
-          <div><span id="scoreCount">0</span><small>ตอบถูก</small></div>
-          <div><span id="doneCount">0</span><small>ทำแล้ว</small></div>
+    <main>
+      <section id="startScreen" class="start-screen">
+        <div class="start-copy">
+          <p class="eyebrow">เลือกชุดข้อสอบ</p>
+          <h2>เลือกชุดที่ต้องการฝึก แล้วเริ่มทำข้อสอบ</h2>
+          <p>เลือกทำเป็นรายชุด หรือทำข้อสอบทั้งหมดรวมกัน ระบบจะตรวจคำตอบหลังจากกดยืนยัน และแสดงคำอธิบายของคำตอบทันที</p>
         </div>
-        <div class="actions">
-          <button id="prevBtn" type="button">ก่อนหน้า</button>
-          <button id="nextBtn" type="button">ถัดไป</button>
-        </div>
-        <button id="resetBtn" class="ghost" type="button">ล้างคำตอบทั้งหมด</button>
-      </aside>
+        <div id="quizCards" class="quiz-cards" aria-live="polite"></div>
+      </section>
 
-      <section class="quiz-panel" aria-live="polite">
-        <div id="loading" class="notice">กำลังโหลดข้อสอบ...</div>
-        <article id="questionView" class="question-view" hidden>
-          <div class="question-meta">
-            <span id="sourceLabel"></span>
-            <span id="progressLabel"></span>
+      <section id="quizScreen" class="layout" hidden>
+        <aside class="sidebar" aria-label="Quiz controls">
+          <div>
+            <p class="sidebar-label">ชุดข้อสอบ</p>
+            <strong id="activeQuizName">-</strong>
           </div>
-          <h2 id="questionTitle"></h2>
-          <p id="questionPrompt" class="prompt"></p>
-          <figure id="questionMedia" class="source-image" hidden></figure>
-          <div id="choiceList" class="choices"></div>
-          <div class="actions row">
-            <button id="submitBtn" type="button">ตรวจคำตอบ</button>
-            <button id="revealBtn" class="ghost" type="button">ดูเฉลยจากไฟล์</button>
+          <label>
+            ค้นหาในชุดนี้
+            <input id="searchInput" type="search" placeholder="keyword, answer, source" />
+          </label>
+          <div class="stats">
+            <div><span id="totalCount">0</span><small>ข้อทั้งหมด</small></div>
+            <div><span id="scoreCount">0</span><small>ตอบถูก</small></div>
+            <div><span id="doneCount">0</span><small>ทำแล้ว</small></div>
           </div>
-          <section id="resultBox" class="result" hidden></section>
-        </article>
+          <div class="actions">
+            <button id="prevBtn" class="ghost" type="button">ก่อนหน้า</button>
+            <button id="nextBtn" type="button">ข้อต่อไป</button>
+          </div>
+          <button id="backBtn" class="ghost" type="button">กลับไปเลือกชุด</button>
+          <button id="resetBtn" class="ghost" type="button">ล้างคำตอบชุดนี้</button>
+        </aside>
+
+        <section class="quiz-panel" aria-live="polite">
+          <div id="loading" class="notice">กำลังโหลดข้อสอบ...</div>
+          <article id="questionView" class="question-view" hidden>
+            <div class="question-meta">
+              <span id="sourceLabel"></span>
+              <span id="progressLabel"></span>
+            </div>
+            <h2 id="questionTitle"></h2>
+            <p id="questionPrompt" class="prompt"></p>
+            <figure id="questionMedia" class="source-image" hidden></figure>
+            <div id="choiceList" class="choices"></div>
+            <div class="actions row">
+              <button id="submitBtn" type="button">ยืนยันคำตอบ</button>
+              <button id="revealBtn" class="ghost" type="button">ดูเฉลย</button>
+            </div>
+            <section id="resultBox" class="result" hidden></section>
+          </article>
+        </section>
       </section>
     </main>
 

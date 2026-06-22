@@ -1,16 +1,22 @@
 const state = {
   all: [],
+  baseSet: [],
   filtered: [],
   current: 0,
   selected: new Set(),
+  activeQuizId: null,
+  activeQuizName: "",
   answers: JSON.parse(localStorage.getItem("cloudplus-answers") || "{}"),
   theme: localStorage.getItem("cloudplus-theme") || "light",
 };
 
 const els = {
+  startScreen: document.getElementById("startScreen"),
+  quizScreen: document.getElementById("quizScreen"),
+  quizCards: document.getElementById("quizCards"),
   loading: document.getElementById("loading"),
   questionView: document.getElementById("questionView"),
-  quizSelect: document.getElementById("quizSelect"),
+  activeQuizName: document.getElementById("activeQuizName"),
   searchInput: document.getElementById("searchInput"),
   totalCount: document.getElementById("totalCount"),
   scoreCount: document.getElementById("scoreCount"),
@@ -26,6 +32,7 @@ const els = {
   resultBox: document.getElementById("resultBox"),
   prevBtn: document.getElementById("prevBtn"),
   nextBtn: document.getElementById("nextBtn"),
+  backBtn: document.getElementById("backBtn"),
   resetBtn: document.getElementById("resetBtn"),
   themeToggle: document.getElementById("themeToggle"),
 };
@@ -49,25 +56,91 @@ function normalize(value) {
     .trim();
 }
 
+function answerKey(item) {
+  return item.id;
+}
+
+function isAnswered(item) {
+  return Boolean(state.answers[answerKey(item)]);
+}
+
+function hasConfirmedCurrent() {
+  const item = state.filtered[state.current];
+  return item ? isAnswered(item) : false;
+}
+
+function renderStartScreen() {
+  const quizMap = new Map();
+  state.all.forEach((item) => {
+    if (!quizMap.has(item.quizId)) {
+      quizMap.set(item.quizId, { id: item.quizId, name: item.quiz, count: 0 });
+    }
+    quizMap.get(item.quizId).count += 1;
+  });
+
+  const cards = [
+    { id: "all", name: "ทำข้อสอบทั้งหมด", count: state.all.length, description: "รวมทุกชุดข้อสอบไว้ในรอบเดียว" },
+    ...[...quizMap.values()].map((quiz) => ({
+      ...quiz,
+      description: `${quiz.count} ข้อจาก ${quiz.name}`,
+    })),
+  ];
+
+  els.quizCards.innerHTML = "";
+  cards.forEach((quiz) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "quiz-card";
+    button.innerHTML = `
+      <span>${quiz.name}</span>
+      <strong>${quiz.count} ข้อ</strong>
+      <small>${quiz.description}</small>
+    `;
+    button.addEventListener("click", () => startQuiz(quiz.id, quiz.name));
+    els.quizCards.appendChild(button);
+  });
+}
+
+function startQuiz(quizId, quizName) {
+  state.activeQuizId = quizId;
+  state.activeQuizName = quizName;
+  state.baseSet = quizId === "all" ? [...state.all] : state.all.filter((item) => item.quizId === quizId);
+  state.current = 0;
+  state.selected = new Set();
+  els.activeQuizName.textContent = quizName;
+  els.searchInput.value = "";
+  els.startScreen.hidden = true;
+  els.quizScreen.hidden = false;
+  applyFilters();
+}
+
+function backToStart() {
+  els.quizScreen.hidden = true;
+  els.startScreen.hidden = false;
+  state.activeQuizId = null;
+  state.baseSet = [];
+  state.filtered = [];
+  renderStartScreen();
+}
+
 function applyFilters() {
-  const quiz = els.quizSelect.value;
   const query = normalize(els.searchInput.value);
-  state.filtered = state.all.filter((item) => {
-    const quizOk = quiz === "all" || item.quizId === quiz;
+  state.filtered = state.baseSet.filter((item) => {
     const haystack = normalize([
       item.prompt,
       item.correctAnswerText,
       item.sourcePdf,
       item.choices.map((choice) => choice.text).join(" "),
     ].join(" "));
-    return quizOk && (!query || haystack.includes(query));
+    return !query || haystack.includes(query);
   });
   state.current = Math.min(state.current, Math.max(0, state.filtered.length - 1));
   render();
 }
 
 function renderStats() {
-  const done = Object.values(state.answers);
+  const visibleIds = new Set(state.baseSet.map((item) => item.id));
+  const done = Object.entries(state.answers).filter(([id]) => visibleIds.has(id)).map(([, answer]) => answer);
   els.totalCount.textContent = state.filtered.length;
   els.doneCount.textContent = done.length;
   els.scoreCount.textContent = done.filter((answer) => answer.correct).length;
@@ -97,7 +170,9 @@ function render() {
   }
 
   const item = state.filtered[state.current];
-  state.selected = new Set(state.answers[item.id]?.selected || []);
+  const saved = state.answers[answerKey(item)];
+  state.selected = new Set(saved?.selected || []);
+
   els.loading.hidden = true;
   els.questionView.hidden = false;
   els.resultBox.hidden = true;
@@ -107,32 +182,46 @@ function render() {
   els.questionTitle.textContent = `ข้อ ${item.number}`;
   els.questionPrompt.textContent = item.prompt || "อ่านโจทย์จากข้อความและภาพประกอบด้านล่าง";
   renderMedia(item);
+  renderChoices(item, Boolean(saved));
+
+  els.submitBtn.disabled = state.selected.size === 0 || Boolean(saved);
+  els.revealBtn.disabled = Boolean(saved);
+  els.nextBtn.disabled = state.current >= state.filtered.length - 1 || !hasConfirmedCurrent();
+  els.prevBtn.disabled = state.current <= 0;
+
+  if (saved) showResult(item, saved.correct, true);
+}
+
+function renderChoices(item, locked) {
   els.choiceList.innerHTML = "";
+  const saved = state.answers[answerKey(item)];
+  const correctLabels = new Set(item.correctLabels || []);
+  const selectedLabels = new Set(saved?.selected || state.selected);
 
   item.choices.forEach((choice) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "choice";
     button.dataset.label = choice.label;
-    if (state.selected.has(choice.label)) button.classList.add("selected");
-    button.innerHTML = `<span class="choice-label">${choice.label}</span><span>${choice.text || `Option ${choice.label}`}</span>`;
+    if (selectedLabels.has(choice.label)) button.classList.add("selected");
+    if (locked && correctLabels.has(choice.label)) button.classList.add("correct");
+    if (locked && selectedLabels.has(choice.label) && !correctLabels.has(choice.label)) button.classList.add("wrong");
+    button.disabled = locked;
+    button.innerHTML = `<span class="choice-label">${escapeHtml(choice.label)}</span><span>${escapeHtml(choice.text || `Option ${choice.label}`)}</span>`;
     button.addEventListener("click", () => toggleChoice(item, choice.label));
     els.choiceList.appendChild(button);
   });
-
-  const saved = state.answers[item.id];
-  if (saved) showResult(item, saved.correct, false);
 }
 
 function toggleChoice(item, label) {
+  if (isAnswered(item)) return;
   if (item.mode === "multiple") {
     state.selected.has(label) ? state.selected.delete(label) : state.selected.add(label);
   } else {
     state.selected = new Set([label]);
   }
-  [...els.choiceList.querySelectorAll(".choice")].forEach((button) => {
-    button.classList.toggle("selected", state.selected.has(button.dataset.label));
-  });
+  renderChoices(item, false);
+  els.submitBtn.disabled = state.selected.size === 0;
 }
 
 function isCorrect(item) {
@@ -143,40 +232,89 @@ function isCorrect(item) {
 
 function submitAnswer() {
   const item = state.filtered[state.current];
+  if (!item || state.selected.size === 0 || isAnswered(item)) return;
   const correct = isCorrect(item);
-  state.answers[item.id] = { selected: [...state.selected], correct };
+  state.answers[answerKey(item)] = { selected: [...state.selected], correct };
   saveAnswers();
+  renderChoices(item, true);
   showResult(item, correct, true);
   renderStats();
+  els.submitBtn.disabled = true;
+  els.revealBtn.disabled = true;
+  els.nextBtn.disabled = state.current >= state.filtered.length - 1;
 }
 
-function showResult(item, correct, updateChoices) {
-  const correctLabels = new Set(item.correctLabels || []);
-  if (updateChoices) {
-    [...els.choiceList.querySelectorAll(".choice")].forEach((button) => {
-      const label = button.dataset.label;
-      button.classList.toggle("correct", correctLabels.has(label));
-      button.classList.toggle("wrong", state.selected.has(label) && !correctLabels.has(label));
-    });
-  }
+function escapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 
-  const explanationHtml = item.choices.map((choice) => {
-    const text = item.choiceExplanations?.[choice.label] || "";
-    return `<p><strong>${choice.label}.</strong> ${text}</p>`;
-  }).join("");
+function renderChoiceExplanations(item) {
+  const explanations = item.choiceExplanations || {};
+  const rows = item.choices
+    .map((choice) => {
+      const text = explanations[choice.label];
+      if (!text) return "";
+      const choiceText = choice.text || `Option ${choice.label}`;
+      return `
+        <li>
+          <strong>${escapeHtml(choice.label)}. ${escapeHtml(choiceText)}</strong>
+          <span>${escapeHtml(text)}</span>
+        </li>
+      `;
+    })
+    .filter(Boolean)
+    .join("");
+
+  if (!rows) return "";
+  return `
+    <div class="explanations">
+      <h4>เหตุผลของแต่ละตัวเลือก</h4>
+      <ul>${rows}</ul>
+    </div>
+  `;
+}
+
+function showResult(item, correct) {
+  const correctText = item.correctAnswerText || item.correctAnswers.join(", ");
+  const explanation = item.explanation || "คำตอบนี้เหมาะที่สุดตามแนวคิดของหัวข้อที่โจทย์ถาม";
+  const selectedText = [...(state.answers[answerKey(item)]?.selected || state.selected)].join(", ") || "-";
 
   els.resultBox.className = `result ${correct ? "ok" : "bad"}`;
   els.resultBox.innerHTML = `
     <h3>${correct ? "ตอบถูก" : "ยังไม่ถูก"}</h3>
-    <p><strong>เฉลย:</strong> ${item.correctAnswerText || item.correctAnswers.join(", ")}</p>
-    <div class="explanations">${explanationHtml}</div>
+    <p><strong>คำตอบของคุณ:</strong> ${escapeHtml(selectedText)}</p>
+    <p><strong>เฉลย:</strong> ${escapeHtml(correctText)}</p>
+    <p>${escapeHtml(explanation)}</p>
+    ${renderChoiceExplanations(item)}
   `;
   els.resultBox.hidden = false;
 }
 
 function revealAnswer() {
   const item = state.filtered[state.current];
-  showResult(item, false, true);
+  if (!item || isAnswered(item)) return;
+  state.answers[answerKey(item)] = { selected: [...state.selected], correct: false, revealed: true };
+  saveAnswers();
+  renderChoices(item, true);
+  showResult(item, false);
+  renderStats();
+  els.submitBtn.disabled = true;
+  els.revealBtn.disabled = true;
+  els.nextBtn.disabled = state.current >= state.filtered.length - 1;
+}
+
+function resetActiveAnswers() {
+  const activeIds = new Set(state.baseSet.map((item) => item.id));
+  Object.keys(state.answers).forEach((id) => {
+    if (activeIds.has(id)) delete state.answers[id];
+  });
+  saveAnswers();
+  render();
 }
 
 async function init() {
@@ -184,31 +322,25 @@ async function init() {
   const response = await fetch("data/questions.json");
   const payload = await response.json();
   state.all = payload.questions || [];
+  renderStartScreen();
 
-  const quizzes = [...new Map(state.all.map((item) => [item.quizId, item.quiz])).entries()];
-  els.quizSelect.innerHTML = `<option value="all">ทั้งหมด</option>${quizzes.map(([id, name]) => `<option value="${id}">${name}</option>`).join("")}`;
-
-  els.quizSelect.addEventListener("change", applyFilters);
   els.searchInput.addEventListener("input", applyFilters);
   els.prevBtn.addEventListener("click", () => {
     state.current = Math.max(0, state.current - 1);
     render();
   });
   els.nextBtn.addEventListener("click", () => {
+    if (!hasConfirmedCurrent()) return;
     state.current = Math.min(state.filtered.length - 1, state.current + 1);
     render();
   });
+  els.backBtn.addEventListener("click", backToStart);
   els.submitBtn.addEventListener("click", submitAnswer);
   els.revealBtn.addEventListener("click", revealAnswer);
-  els.resetBtn.addEventListener("click", () => {
-    state.answers = {};
-    saveAnswers();
-    render();
-  });
+  els.resetBtn.addEventListener("click", resetActiveAnswers);
   els.themeToggle.addEventListener("click", () => setTheme(state.theme === "dark" ? "light" : "dark"));
-  applyFilters();
 }
 
 init().catch((error) => {
-  els.loading.textContent = `โหลดข้อมูลไม่สำเร็จ: ${error.message}`;
+  els.quizCards.innerHTML = `<div class="notice">โหลดข้อมูลไม่สำเร็จ: ${error.message}</div>`;
 });

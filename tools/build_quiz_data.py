@@ -17,6 +17,8 @@ from winsdk.windows.graphics.imaging import BitmapDecoder
 from winsdk.windows.media.ocr import OcrEngine
 from winsdk.windows.storage import FileAccessMode, StorageFile
 
+from enrich_explanations import build_choice_explanation, build_question_explanation
+
 
 ROOT = Path(__file__).resolve().parents[1]
 QUESTION_DIR = ROOT / "Question"
@@ -580,12 +582,9 @@ def build_explanations(
     for choice in choices:
         label = choice["label"]
         if label in correct:
-            explanations[label] = "ถูกต้องตามเฉลยในไฟล์ PDF ต้นฉบับ"
+            explanations[label] = f"ถูก เพราะตัวเลือกนี้ตรงกับแนวคิดหลักของคำตอบ: {correct_answer}"
         else:
-            explanations[label] = (
-                f"ไม่ใช่ตัวเลือกที่เฉลยในไฟล์ PDF ระบุ ข้อนี้เฉลยว่า \"{correct_answer}\" "
-                f"ดังนั้นตัวเลือก \"{choice['text']}\" ไม่ตรงกับคำตอบที่ถูกต้องของข้อสอบต้นฉบับ"
-            )
+            explanations[label] = f"ยังไม่เหมาะ เพราะตัวเลือกนี้ไม่ตอบโจทย์หลักเท่ากับ {correct_answer}"
     return explanations
 
 
@@ -734,12 +733,24 @@ async def build() -> None:
 
     generate_manual_media_assets()
     apply_manual_label_fallbacks(questions)
+    for question in questions:
+        question["explanation"] = build_question_explanation(question)
+        question["choiceExplanations"] = {
+            choice["label"]: build_choice_explanation(question, choice)
+            for choice in question.get("choices", [])
+        }
 
     payload = {
         "generatedFrom": [pdf.name for pdf in list_source_pdfs()],
         "ignored": ["cloud_quiz_final.pdf"],
-        "answerSource": "Correct answers are OCR-extracted from the visible answer strips in the source PDFs. Each item also includes the cropped official answer image.",
-        "explanationSource": "Choice explanations are generated helper text; the authoritative correct answer remains the source PDF answer strip.",
+        "answerSource": "Correct answers are OCR-extracted from the visible answer strips in the source PDFs; answer images are not displayed in the web app.",
+        "explanationSource": "Thai helper explanations are generated from vendor-neutral Cloud+ concepts, including NIST cloud characteristics/service models, CompTIA Cloud+ domains, and major cloud provider documentation. They explain the concept; the answer key still follows the source PDFs.",
+        "explanationReferences": [
+            "https://csrc.nist.gov/pubs/sp/800/145/final",
+            "https://www.comptia.org/en-us/certifications/cloud/",
+            "https://www.ibm.com/think/topics/iaas-paas-saas",
+            "https://cloud.google.com/learn/paas-vs-iaas-vs-saas",
+        ],
         "warnings": warnings,
         "count": len(questions),
         "questions": questions,
