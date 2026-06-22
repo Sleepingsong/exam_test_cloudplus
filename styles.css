@@ -286,9 +286,7 @@ main {
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
-  gap: 24px;
-  width: min(1280px, calc(100% - 32px));
+  width: min(980px, calc(100% - 32px));
   margin: 28px auto 56px;
   padding: clamp(18px, 3vw, 28px);
   background: var(--glass-bg);
@@ -368,10 +366,12 @@ input {
 
 .row {
   margin-top: 18px;
+  align-items: stretch;
 }
 
 .quiz-panel {
   min-width: 0;
+  width: 100%;
 }
 
 .notice,
@@ -451,7 +451,17 @@ input {
 
 .choice.selected {
   border-color: var(--primary);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 28%, transparent);
+  background: color-mix(in srgb, var(--primary) 26%, var(--surface-2));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 45%, transparent), 0 16px 34px rgba(99, 102, 241, 0.18);
+}
+
+.choice.selected .choice-label {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+}
+
+.choice.limited {
+  opacity: 0.52;
 }
 
 .choice.correct {

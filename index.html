@@ -34,28 +34,6 @@
       </section>
 
       <section id="quizScreen" class="layout" hidden>
-        <aside class="sidebar" aria-label="Quiz controls">
-          <div>
-            <p class="sidebar-label">ชุดข้อสอบ</p>
-            <strong id="activeQuizName">-</strong>
-          </div>
-          <label>
-            ค้นหาในชุดนี้
-            <input id="searchInput" type="search" placeholder="keyword, answer, source" />
-          </label>
-          <div class="stats">
-            <div><span id="totalCount">0</span><small>ข้อทั้งหมด</small></div>
-            <div><span id="scoreCount">0</span><small>ตอบถูก</small></div>
-            <div><span id="doneCount">0</span><small>ทำแล้ว</small></div>
-          </div>
-          <div class="actions">
-            <button id="prevBtn" class="ghost" type="button">ก่อนหน้า</button>
-            <button id="nextBtn" type="button">ข้อต่อไป</button>
-          </div>
-          <button id="backBtn" class="ghost" type="button">กลับไปเลือกชุด</button>
-          <button id="resetBtn" class="ghost" type="button">ล้างคำตอบชุดนี้</button>
-        </aside>
-
         <section class="quiz-panel" aria-live="polite">
           <div id="loading" class="notice">กำลังโหลดข้อสอบ...</div>
           <article id="questionView" class="question-view" hidden>
@@ -69,8 +47,9 @@
             <figure id="questionMedia" class="source-image" hidden></figure>
             <div id="choiceList" class="choices"></div>
             <div class="actions row">
+              <button id="prevBtn" class="ghost" type="button">ก่อนหน้า</button>
               <button id="submitBtn" type="button">ยืนยันคำตอบ</button>
-              <button id="revealBtn" class="ghost" type="button">ดูเฉลย</button>
+              <button id="nextBtn" type="button">ข้อต่อไป</button>
             </div>
             <section id="resultBox" class="result" hidden></section>
           </article>

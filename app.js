@@ -16,11 +16,6 @@ const els = {
   quizCards: document.getElementById("quizCards"),
   loading: document.getElementById("loading"),
   questionView: document.getElementById("questionView"),
-  activeQuizName: document.getElementById("activeQuizName"),
-  searchInput: document.getElementById("searchInput"),
-  totalCount: document.getElementById("totalCount"),
-  scoreCount: document.getElementById("scoreCount"),
-  doneCount: document.getElementById("doneCount"),
   sourceLabel: document.getElementById("sourceLabel"),
   progressLabel: document.getElementById("progressLabel"),
   questionTitle: document.getElementById("questionTitle"),
@@ -29,12 +24,9 @@ const els = {
   questionMedia: document.getElementById("questionMedia"),
   choiceList: document.getElementById("choiceList"),
   submitBtn: document.getElementById("submitBtn"),
-  revealBtn: document.getElementById("revealBtn"),
   resultBox: document.getElementById("resultBox"),
   prevBtn: document.getElementById("prevBtn"),
   nextBtn: document.getElementById("nextBtn"),
-  backBtn: document.getElementById("backBtn"),
-  resetBtn: document.getElementById("resetBtn"),
   themeToggle: document.getElementById("themeToggle"),
 };
 
@@ -130,8 +122,6 @@ function startQuiz(quizId, quizName) {
   clearAnswersFor(state.baseSet);
   state.current = 0;
   state.selected = new Set();
-  els.activeQuizName.textContent = quizName;
-  els.searchInput.value = "";
   els.startScreen.hidden = true;
   els.quizScreen.hidden = false;
   applyFilters();
@@ -147,26 +137,15 @@ function backToStart() {
 }
 
 function applyFilters() {
-  const query = normalize(els.searchInput.value);
-  state.filtered = state.baseSet.filter((item) => {
-    const haystack = normalize([
-      item.prompt,
-      item.correctAnswerText,
-      item.sourcePdf,
-      item.choices.map((choice) => choice.text).join(" "),
-    ].join(" "));
-    return !query || haystack.includes(query);
-  });
+  state.filtered = [...state.baseSet];
   state.current = Math.min(state.current, Math.max(0, state.filtered.length - 1));
   render();
 }
 
 function renderStats() {
-  const visibleIds = new Set(state.baseSet.map((item) => item.id));
-  const done = Object.entries(state.answers).filter(([id]) => visibleIds.has(id)).map(([, answer]) => answer);
-  els.totalCount.textContent = state.filtered.length;
-  els.doneCount.textContent = done.length;
-  els.scoreCount.textContent = done.filter((answer) => answer.correct).length;
+  return Object.entries(state.answers)
+    .filter(([id]) => state.baseSet.some((item) => item.id === id))
+    .map(([, answer]) => answer);
 }
 
 function renderMedia(item) {
@@ -209,7 +188,6 @@ function render() {
   renderChoices(item, Boolean(saved));
 
   els.submitBtn.disabled = !hasEnoughSelections(item) || Boolean(saved);
-  els.revealBtn.disabled = Boolean(saved);
   els.nextBtn.disabled = state.current >= state.filtered.length - 1 || !hasConfirmedCurrent();
   els.prevBtn.disabled = state.current <= 0;
 
@@ -232,6 +210,7 @@ function renderChoices(item, locked) {
     if (selectedLabels.has(choice.label)) button.classList.add("selected");
     if (locked && correctLabels.has(choice.label)) button.classList.add("correct");
     if (locked && selectedLabels.has(choice.label) && !correctLabels.has(choice.label)) button.classList.add("wrong");
+    if (limitReached && !selectedLabels.has(choice.label)) button.classList.add("limited");
     button.disabled = locked || (limitReached && !selectedLabels.has(choice.label));
     button.innerHTML = `<span class="choice-label">${escapeHtml(choice.label)}</span><span>${escapeHtml(choice.text || `Option ${choice.label}`)}</span>`;
     button.addEventListener("click", () => toggleChoice(item, choice.label));
@@ -272,7 +251,6 @@ function submitAnswer() {
   showResult(item, correct, true);
   renderStats();
   els.submitBtn.disabled = true;
-  els.revealBtn.disabled = true;
   els.nextBtn.disabled = state.current >= state.filtered.length - 1;
 }
 
@@ -327,28 +305,6 @@ function showResult(item, correct) {
   els.resultBox.hidden = false;
 }
 
-function revealAnswer() {
-  const item = state.filtered[state.current];
-  if (!item || isAnswered(item)) return;
-  state.answers[answerKey(item)] = { selected: [...state.selected], correct: false, revealed: true };
-  saveAnswers();
-  renderChoices(item, true);
-  showResult(item, false);
-  renderStats();
-  els.submitBtn.disabled = true;
-  els.revealBtn.disabled = true;
-  els.nextBtn.disabled = state.current >= state.filtered.length - 1;
-}
-
-function resetActiveAnswers() {
-  const activeIds = new Set(state.baseSet.map((item) => item.id));
-  Object.keys(state.answers).forEach((id) => {
-    if (activeIds.has(id)) delete state.answers[id];
-  });
-  saveAnswers();
-  render();
-}
-
 async function init() {
   setTheme(state.theme);
   const response = await fetch("data/questions.json");
@@ -356,7 +312,6 @@ async function init() {
   state.all = payload.questions || [];
   renderStartScreen();
 
-  els.searchInput.addEventListener("input", applyFilters);
   els.prevBtn.addEventListener("click", () => {
     state.current = Math.max(0, state.current - 1);
     render();
@@ -366,10 +321,7 @@ async function init() {
     state.current = Math.min(state.filtered.length - 1, state.current + 1);
     render();
   });
-  els.backBtn.addEventListener("click", backToStart);
   els.submitBtn.addEventListener("click", submitAnswer);
-  els.revealBtn.addEventListener("click", revealAnswer);
-  els.resetBtn.addEventListener("click", resetActiveAnswers);
   els.themeToggle.addEventListener("click", () => setTheme(state.theme === "dark" ? "light" : "dark"));
 }
 
