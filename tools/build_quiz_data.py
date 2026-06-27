@@ -142,7 +142,11 @@ MANUAL_TEXT_FALLBACKS = {
 MANUAL_PROMPT_FALLBACKS = {
     "cloud_quiz01_q008": "A cloud engineer wants to run a script that increases the volume storage size if it is below 100GB. Which of the following should the engineer run?",
     "cloud_quiz01_q039": "An administrator is creating a cron job that shuts down the virtual machines at night to save on costs. Which of the following is the best way to achieve this task?",
+    "cloud_quiz02_q014": "[Prompt missing from OCR. Review cloud_quiz02.pdf question 14.]",
+    "cloud_quiz04_q007": "[Prompt missing from OCR. Review cloud_quiz04.pdf question 7.]",
+    "cloud_quiz04_q034": "[Prompt missing from OCR. Review cloud_quiz04.pdf question 34.]",
     "cloud_quiz05_q013": "A systems administrator needs to configure a script that will monitor whether an application is healthy and stop the VM if an unsuccessful code is returned. Which of the following scripts should the systems administrator use to achieve this goal?",
+    "cloud_quiz05_q023": "[Prompt missing from OCR. Review cloud_quiz05.pdf question 23.]",
     "cloud_quiz10_q007": "A cloud solutions architect wants to deploy a three-tier web application that requires the minimum amount of operational overhead. Which of the following is the best template given these requirements?",
     "cloud_quiz12_q005": "A cloud solutions architect needs to deploy a simple, public-facing website with the following requirements: Cost-effective, highly available, self-healing, and secure. Which of the following is the most appropriate template to use?",
 }
@@ -153,6 +157,24 @@ MANUAL_MEDIA_FALLBACKS = {
     "cloud_quiz05_q013": ("assets/media/cloud_quiz05_q013_options.png", "ตัวเลือกสคริปต์ A-D สำหรับข้อ 13"),
     "cloud_quiz10_q007": ("assets/media/cloud_quiz10_q007_options.png", "ตัวเลือก template A-D สำหรับข้อ 7"),
     "cloud_quiz12_q005": ("assets/media/cloud_quiz12_q005_options.png", "ตัวเลือก template A-D สำหรับข้อ 5"),
+}
+
+DUPLICATE_QUESTION_IDS = {
+    "cloud_quiz06_q008",
+    "cloud_quiz07_q002",
+    "cloud_quiz08_q014",
+    "cloud_quiz06_q009",
+    "cloud_quiz07_q003",
+    "cloud_quiz07_q004",
+    "cloud_quiz07_q005",
+    "cloud_quiz07_q006",
+    "cloud_quiz07_q007",
+    "cloud_quiz07_q008",
+    "cloud_quiz07_q009",
+    "cloud_quiz07_q010",
+    "cloud_quiz08_q006",
+    "cloud_quiz08_q003",
+    "cloud_quiz07_q001",
 }
 
 
@@ -614,6 +636,29 @@ def apply_manual_label_fallbacks(questions: list[dict]) -> None:
             question["media"] = [{"type": "image", "src": src, "alt": alt}]
 
 
+def dedupe_questions(questions: list[dict]) -> list[dict]:
+    seen: set[tuple[str, tuple[str, ...], tuple[str, ...]]] = set()
+    unique: list[dict] = []
+    for question in questions:
+        if question["id"] in DUPLICATE_QUESTION_IDS:
+            continue
+
+        prompt = normalize(question.get("prompt", ""))
+        if not prompt or prompt.startswith("prompt missing from ocr"):
+            unique.append(question)
+            continue
+
+        choices = tuple(normalize(choice.get("text", "")) for choice in question.get("choices", []))
+        answers = tuple(normalize(answer) for answer in question.get("correctAnswers", []))
+        key = (prompt, choices, answers)
+        if key in seen:
+            continue
+
+        seen.add(key)
+        unique.append(question)
+    return unique
+
+
 def generate_manual_media_assets() -> None:
     media_dir = ROOT / "assets" / "media"
     media_dir.mkdir(parents=True, exist_ok=True)
@@ -733,6 +778,7 @@ async def build() -> None:
 
     generate_manual_media_assets()
     apply_manual_label_fallbacks(questions)
+    questions = dedupe_questions(questions)
     for question in questions:
         question["explanation"] = build_question_explanation(question)
         question["choiceExplanations"] = {

@@ -19,7 +19,7 @@
   "answerSource": "Correct answers are OCR-extracted from the visible answer strips in the source PDFs; answer images are not displayed in the web app.",
   "explanationSource": "Thai helper explanations are generated from vendor-neutral Cloud+ concepts, including NIST cloud characteristics/service models, CompTIA Cloud+ domains, and major cloud provider documentation. They explain the concept; the answer key still follows the source PDFs.",
   "warnings": [],
-  "count": 319,
+  "count": 304,
   "questions": [
     {
       "id": "cloud_quiz01_q001",
@@ -2428,7 +2428,7 @@
       "quiz": "Quiz 02",
       "number": 14,
       "sourcePdf": "cloud_quiz02.pdf",
-      "prompt": "",
+      "prompt": "[Prompt missing from OCR. Review cloud_quiz02.pdf question 14.]",
       "mode": "single",
       "choices": [
         {
@@ -5643,7 +5643,7 @@
       "quiz": "Quiz 04",
       "number": 7,
       "sourcePdf": "cloud_quiz04.pdf",
-      "prompt": "",
+      "prompt": "[Prompt missing from OCR. Review cloud_quiz04.pdf question 7.]",
       "mode": "single",
       "choices": [
         {
@@ -6839,7 +6839,7 @@
       "quiz": "Quiz 04",
       "number": 34,
       "sourcePdf": "cloud_quiz04.pdf",
-      "prompt": "",
+      "prompt": "[Prompt missing from OCR. Review cloud_quiz04.pdf question 34.]",
       "mode": "single",
       "choices": [
         {
@@ -8117,7 +8117,7 @@
       "quiz": "Quiz 05",
       "number": 23,
       "sourcePdf": "cloud_quiz05.pdf",
-      "prompt": "",
+      "prompt": "[Prompt missing from OCR. Review cloud_quiz05.pdf question 23.]",
       "mode": "single",
       "choices": [
         {
@@ -9222,94 +9222,6 @@
       "explanation": "เฉลยคือ Spot instance เพราะ spot instance ใช้ capacity ส่วนเกินราคาถูก เหมาะกับงานยืดหยุ่นและทนต่อการถูกยกเลิกได้"
     },
     {
-      "id": "cloud_quiz06_q008",
-      "quizId": "cloud_quiz06",
-      "quiz": "Quiz 06",
-      "number": 8,
-      "sourcePdf": "cloud_quiz06.pdf",
-      "prompt": "Which of the following best describes a characteristic of a hot site?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "Servers in the hot site are clustered with the main site."
-        },
-        {
-          "label": "B",
-          "text": "Network traffic is balanced between the main site and hot site servers."
-        },
-        {
-          "label": "C",
-          "text": "Offline server backups are replicated hourly from the main site."
-        },
-        {
-          "label": "D",
-          "text": "All servers are replicated from the main site in an online status."
-        }
-      ],
-      "correctAnswerText": "All servers are replicated from the main site in an online status",
-      "correctAnswers": [
-        "All servers are replicated from the main site in an online status"
-      ],
-      "correctLabels": [
-        "D"
-      ],
-      "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด แต่โจทย์ต้องการ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด แต่โจทย์ต้องการ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ backup/restore ใช้สำรองข้อมูลและกู้คืนเมื่อข้อมูลเสียหายหรือระบบล่ม แต่โจทย์ต้องการ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด",
-        "D": "ถูก เพราะ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด"
-      },
-      "ocrText": "Which of the following best describes a characteristic of a hot site? Select one: A. B. C. D. Servers in the hot site are clustered with the main site. Network traffic is balanced between the main site and hot site servers. Offline server backups are replicated hourly from the main site. All servers are replicated from the main site in an online status.",
-      "answerOcrText": "The correct answer is: All servers are replicated from the main site in an online status.",
-      "media": [],
-      "explanation": "เฉลยคือ All servers are replicated from the main site in an online status เพราะ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด"
-    },
-    {
-      "id": "cloud_quiz06_q009",
-      "quizId": "cloud_quiz06",
-      "quiz": "Quiz 06",
-      "number": 9,
-      "sourcePdf": "cloud_quiz06.pdf",
-      "prompt": "An organization's web application experiences periodic bursts of traffic when a new video is launched. Users are reporting poor performance in the middle of the month. Which of the following scaling approaches should the organization use to scale based on forecasted traffic?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "Scheduled"
-        },
-        {
-          "label": "B",
-          "text": "Manual"
-        },
-        {
-          "label": "C",
-          "text": "Event"
-        },
-        {
-          "label": "D",
-          "text": "Load"
-        }
-      ],
-      "correctAnswerText": "Scheduled",
-      "correctAnswers": [
-        "Scheduled"
-      ],
-      "correctLabels": [
-        "A"
-      ],
-      "choiceExplanations": {
-        "A": "ถูก เพราะ การตั้งเวลาปิด resource นอกเวลางานช่วยลดค่าใช้จ่าย เพราะ cloud คิดค่าบริการจากเวลาหรือปริมาณการใช้งาน",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การตั้งเวลาปิด resource นอกเวลางานช่วยลดค่าใช้จ่าย เพราะ cloud คิดค่าบริการจากเวลาหรือปริมาณการใช้งาน",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การตั้งเวลาปิด resource นอกเวลางานช่วยลดค่าใช้จ่าย เพราะ cloud คิดค่าบริการจากเวลาหรือปริมาณการใช้งาน",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การตั้งเวลาปิด resource นอกเวลางานช่วยลดค่าใช้จ่าย เพราะ cloud คิดค่าบริการจากเวลาหรือปริมาณการใช้งาน"
-      },
-      "ocrText": "An organization's web application experiences periodic bursts of traffic when a new video is launched. Users are reporting poor performance in the middle of the month. Which of the following scaling approaches should the organization use to scale based on forecasted traffic? Select one: A. B. C. D. Scheduled Manual Event Load",
-      "answerOcrText": "The correct answer is: Scheduled",
-      "media": [],
-      "explanation": "เฉลยคือ Scheduled เพราะ การตั้งเวลาปิด resource นอกเวลางานช่วยลดค่าใช้จ่าย เพราะ cloud คิดค่าบริการจากเวลาหรือปริมาณการใช้งาน"
-    },
-    {
       "id": "cloud_quiz06_q010",
       "quizId": "cloud_quiz06",
       "quiz": "Quiz 06",
@@ -9618,446 +9530,6 @@
       "explanation": "เฉลยคือ Edge computing เพราะ edge computing ประมวลผลใกล้แหล่งข้อมูลเพื่อลด latency และลดการส่งข้อมูลกลับ cloud ส่วนกลาง"
     },
     {
-      "id": "cloud_quiz07_q001",
-      "quizId": "cloud_quiz07",
-      "quiz": "Quiz 07",
-      "number": 1,
-      "sourcePdf": "cloud_quiz07.pdf",
-      "prompt": "Which of the following models will best reduce the cost of running short-term, non critical workloads?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "Reserved"
-        },
-        {
-          "label": "B",
-          "text": "Spot instance"
-        },
-        {
-          "label": "C",
-          "text": "Pay-as-you-go"
-        },
-        {
-          "label": "D",
-          "text": "Dedicated host"
-        }
-      ],
-      "correctAnswerText": "Spot instance",
-      "correctAnswers": [
-        "Spot instance"
-      ],
-      "correctLabels": [
-        "B"
-      ],
-      "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ reserved resources เหมาะกับ workload ที่ใช้ต่อเนื่อง เพราะแลก commitment ระยะยาวกับราคาที่ต่ำลง แต่โจทย์ต้องการ spot instance ใช้ capacity ส่วนเกินราคาถูก เหมาะกับงานยืดหยุ่นและทนต่อการถูกยกเลิกได้",
-        "B": "ถูก เพราะ spot instance ใช้ capacity ส่วนเกินราคาถูก เหมาะกับงานยืดหยุ่นและทนต่อการถูกยกเลิกได้",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ pay-as-you-go จ่ายตามการใช้งานจริง จึงยืดหยุ่นแต่ไม่ใช่ตัวลดต้นทุนสูงสุดสำหรับงานคงที่เสมอไป แต่โจทย์ต้องการ spot instance ใช้ capacity ส่วนเกินราคาถูก เหมาะกับงานยืดหยุ่นและทนต่อการถูกยกเลิกได้",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ dedicated host ให้เครื่องกายภาพเฉพาะลูกค้า เหมาะกับข้อกำหนด licensing หรือ isolation แต่มักมีต้นทุนสูงกว่า แต่โจทย์ต้องการ spot instance ใช้ capacity ส่วนเกินราคาถูก เหมาะกับงานยืดหยุ่นและทนต่อการถูกยกเลิกได้"
-      },
-      "ocrText": "Which of the following models will best reduce the cost of running short-term, non critical workloads? Select one: A. B. C. D Reserved Spot instance Pay-as-you-go Dedicated host",
-      "answerOcrText": "The correct answer is: Spot instance",
-      "media": [],
-      "explanation": "เฉลยคือ Spot instance เพราะ spot instance ใช้ capacity ส่วนเกินราคาถูก เหมาะกับงานยืดหยุ่นและทนต่อการถูกยกเลิกได้"
-    },
-    {
-      "id": "cloud_quiz07_q002",
-      "quizId": "cloud_quiz07",
-      "quiz": "Quiz 07",
-      "number": 2,
-      "sourcePdf": "cloud_quiz07.pdf",
-      "prompt": "Which of the following best describes a characteristic of a hot site?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "Servers in the hot site are clustered with the main site."
-        },
-        {
-          "label": "B",
-          "text": "Network traffic is balanced between the main site and hot site servers."
-        },
-        {
-          "label": "C",
-          "text": "Offline server backups are replicated hourly from the main site."
-        },
-        {
-          "label": "D",
-          "text": "All servers are replicated from the main site in an online status."
-        }
-      ],
-      "correctAnswerText": "All servers are replicated from the main site in an online status",
-      "correctAnswers": [
-        "All servers are replicated from the main site in an online status"
-      ],
-      "correctLabels": [
-        "D"
-      ],
-      "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด แต่โจทย์ต้องการ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด แต่โจทย์ต้องการ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ backup/restore ใช้สำรองข้อมูลและกู้คืนเมื่อข้อมูลเสียหายหรือระบบล่ม แต่โจทย์ต้องการ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด",
-        "D": "ถูก เพราะ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด"
-      },
-      "ocrText": "Which of the following best describes a characteristic of a hot site? Select one: A. B. C. D. Servers in the hot site are clustered with the main site. Network traffic is balanced between the main site and hot site servers. Offline server backups are replicated hourly from the main site. All servers are replicated from the main site in an online status.",
-      "answerOcrText": "The correct answer is: All servers are replicated from the main site in an online status.",
-      "media": [],
-      "explanation": "เฉลยคือ All servers are replicated from the main site in an online status เพราะ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด"
-    },
-    {
-      "id": "cloud_quiz07_q003",
-      "quizId": "cloud_quiz07",
-      "quiz": "Quiz 07",
-      "number": 3,
-      "sourcePdf": "cloud_quiz07.pdf",
-      "prompt": "An organization's web application experiences periodic bursts of traffic when a new video is launched. Users are reporting poor performance in the middle of the month. Which of the following scaling approaches should the organization use to scale based on forecasted traffic?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "Scheduled"
-        },
-        {
-          "label": "B",
-          "text": "Manual"
-        },
-        {
-          "label": "C",
-          "text": "Event"
-        },
-        {
-          "label": "D",
-          "text": "Load"
-        }
-      ],
-      "correctAnswerText": "Scheduled",
-      "correctAnswers": [
-        "Scheduled"
-      ],
-      "correctLabels": [
-        "A"
-      ],
-      "choiceExplanations": {
-        "A": "ถูก เพราะ การตั้งเวลาปิด resource นอกเวลางานช่วยลดค่าใช้จ่าย เพราะ cloud คิดค่าบริการจากเวลาหรือปริมาณการใช้งาน",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การตั้งเวลาปิด resource นอกเวลางานช่วยลดค่าใช้จ่าย เพราะ cloud คิดค่าบริการจากเวลาหรือปริมาณการใช้งาน",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การตั้งเวลาปิด resource นอกเวลางานช่วยลดค่าใช้จ่าย เพราะ cloud คิดค่าบริการจากเวลาหรือปริมาณการใช้งาน",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การตั้งเวลาปิด resource นอกเวลางานช่วยลดค่าใช้จ่าย เพราะ cloud คิดค่าบริการจากเวลาหรือปริมาณการใช้งาน"
-      },
-      "ocrText": "An organization's web application experiences periodic bursts of traffic when a new video is launched. Users are reporting poor performance in the middle of the month. Which of the following scaling approaches should the organization use to scale based on forecasted traffic? Select one: A. B. C. D. Scheduled Manual Event Load",
-      "answerOcrText": "The correct answer is: Scheduled",
-      "media": [],
-      "explanation": "เฉลยคือ Scheduled เพราะ การตั้งเวลาปิด resource นอกเวลางานช่วยลดค่าใช้จ่าย เพราะ cloud คิดค่าบริการจากเวลาหรือปริมาณการใช้งาน"
-    },
-    {
-      "id": "cloud_quiz07_q004",
-      "quizId": "cloud_quiz07",
-      "quiz": "Quiz 07",
-      "number": 4,
-      "sourcePdf": "cloud_quiz07.pdf",
-      "prompt": "Which of the following effects would a modification to the host affinity configuration in the cloud console have?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "Hosts in a multicloud environment will run on the same host."
-        },
-        {
-          "label": "B",
-          "text": "A VM will run only on a particular underlying host or group of hosts."
-        },
-        {
-          "label": "C",
-          "text": "Host affinity configuration will have no effect in the cloud environment."
-        },
-        {
-          "label": "D",
-          "text": "An affinity rule will not disqualify hosts from being eligible to start."
-        }
-      ],
-      "correctAnswerText": "A VM will run only on a particular underlying host or group of hosts",
-      "correctAnswers": [
-        "A VM will run only on a particular underlying host or group of hosts"
-      ],
-      "correctLabels": [
-        "B"
-      ],
-      "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ multi-cloud ใช้บริการจากผู้ให้บริการ cloud มากกว่าหนึ่งรายเพื่อหลีกเลี่ยง vendor lock-in หรือเพิ่ม resilience แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "B": "ถูก เพราะ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ"
-      },
-      "ocrText": "Which of the following effects would a modification to the host affinity configuration in the cloud console have? Select one: A. B. C. D. Hosts in a multicloud environment will run on the same host. A VM will run only on a particular underlying host or group of hosts. Host affinity configuration will have no effect in the cloud environment. An affinity rule will not disqualify hosts from being eligible to start.",
-      "answerOcrText": "The correct answer is: A VM will run only on a particular underlying host or group of hosts.",
-      "media": [],
-      "explanation": "เฉลยคือ A VM will run only on a particular underlying host or group of hosts เพราะ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ"
-    },
-    {
-      "id": "cloud_quiz07_q005",
-      "quizId": "cloud_quiz07",
-      "quiz": "Quiz 07",
-      "number": 5,
-      "sourcePdf": "cloud_quiz07.pdf",
-      "prompt": "Which Of the following is used to quickly deploy applications across different cloud providers?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "Snapshot"
-        },
-        {
-          "label": "B",
-          "text": "Container image"
-        },
-        {
-          "label": "C",
-          "text": "Serverless function"
-        },
-        {
-          "label": "D",
-          "text": "VM template"
-        }
-      ],
-      "correctAnswerText": "Container image",
-      "correctAnswers": [
-        "Container image"
-      ],
-      "correctLabels": [
-        "B"
-      ],
-      "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ snapshot บันทึกสถานะ point-in-time ของ volume หรือ VM เพื่อกู้คืนหรือ clone ได้รวดเร็ว แต่โจทย์ต้องการ container image registry เก็บและแจกจ่าย image โดย private repository ต้องยืนยันสิทธิ์ก่อนเข้าถึง",
-        "B": "ถูก เพราะ container image registry เก็บและแจกจ่าย image โดย private repository ต้องยืนยันสิทธิ์ก่อนเข้าถึง",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ FaaS ใช้รันฟังก์ชันตามเหตุการณ์ โดยผู้ให้บริการจัดการโครงสร้างพื้นฐานและการ scale ให้ แต่โจทย์ต้องการ container image registry เก็บและแจกจ่าย image โดย private repository ต้องยืนยันสิทธิ์ก่อนเข้าถึง",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ container image registry เก็บและแจกจ่าย image โดย private repository ต้องยืนยันสิทธิ์ก่อนเข้าถึง"
-      },
-      "ocrText": "Which Of the following is used to quickly deploy applications across different cloud providers? Select one: A. B. C D. Snapshot Container image Serverless function VM template",
-      "answerOcrText": "The correct answer is: Container image",
-      "media": [],
-      "explanation": "เฉลยคือ Container image เพราะ container image registry เก็บและแจกจ่าย image โดย private repository ต้องยืนยันสิทธิ์ก่อนเข้าถึง"
-    },
-    {
-      "id": "cloud_quiz07_q006",
-      "quizId": "cloud_quiz07",
-      "quiz": "Quiz 07",
-      "number": 6,
-      "sourcePdf": "cloud_quiz07.pdf",
-      "prompt": "A company has been using a CRM application that was developed in-house and is hosted on local servers. Due to internal changes, the company wants to migrate the application to the cloud without having to manage the infrastructure. Which of the following services should the company consider?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "SaaS"
-        },
-        {
-          "label": "B",
-          "text": "PaaS"
-        },
-        {
-          "label": "C",
-          "text": "XaaS"
-        },
-        {
-          "label": "D",
-          "text": "IaaS"
-        }
-      ],
-      "correctAnswerText": "PaaS",
-      "correctAnswers": [
-        "PaaS"
-      ],
-      "correctLabels": [
-        "B"
-      ],
-      "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ SaaS คือแอปพลิเคชันสำเร็จรูปที่ผู้ให้บริการดูแลแพลตฟอร์มและแอปให้ ผู้ใช้เพียงเข้าใช้งานผ่านเครือข่าย แต่โจทย์ต้องการ PaaS ให้แพลตฟอร์มสำหรับรันและ deploy โค้ด โดยผู้ใช้ไม่ต้องดูแลระบบปฏิบัติการ เซิร์ฟเวอร์ และ runtime พื้นฐานเอง",
-        "B": "ถูก เพราะ PaaS ให้แพลตฟอร์มสำหรับรันและ deploy โค้ด โดยผู้ใช้ไม่ต้องดูแลระบบปฏิบัติการ เซิร์ฟเวอร์ และ runtime พื้นฐานเอง",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ XaaS เป็นคำกว้างสำหรับบริการแบบ as-a-service จึงมักไม่แม่นเท่าชื่อโมเดลบริการเฉพาะ แต่โจทย์ต้องการ PaaS ให้แพลตฟอร์มสำหรับรันและ deploy โค้ด โดยผู้ใช้ไม่ต้องดูแลระบบปฏิบัติการ เซิร์ฟเวอร์ และ runtime พื้นฐานเอง",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ IaaS ให้เครื่องเสมือน เครือข่าย และสตอเรจที่ผู้ใช้ควบคุมระบบปฏิบัติการและซอฟต์แวร์ได้มากกว่า PaaS/SaaS แต่โจทย์ต้องการ PaaS ให้แพลตฟอร์มสำหรับรันและ deploy โค้ด โดยผู้ใช้ไม่ต้องดูแลระบบปฏิบัติการ เซิร์ฟเวอร์ และ runtime พื้นฐานเอง"
-      },
-      "ocrText": "A company has been using a CRM application that was developed in-house and is hosted on local servers. Due to internal changes, the company wants to migrate the application to the cloud without having to manage the infrastructure. Which of the following services should the company consider? Select one: A. B. C. D. SaaS PaaS XaaS IaaS",
-      "answerOcrText": "The correct answer is: PaaS",
-      "media": [],
-      "explanation": "เฉลยคือ PaaS เพราะ PaaS ให้แพลตฟอร์มสำหรับรันและ deploy โค้ด โดยผู้ใช้ไม่ต้องดูแลระบบปฏิบัติการ เซิร์ฟเวอร์ และ runtime พื้นฐานเอง"
-    },
-    {
-      "id": "cloud_quiz07_q007",
-      "quizId": "cloud_quiz07",
-      "quiz": "Quiz 07",
-      "number": 7,
-      "sourcePdf": "cloud_quiz07.pdf",
-      "prompt": "A cloud engineer discovers that two nodes experience resource exhaustion during the holidays. This creates a denial of service on the web application. Adding a third node is not an option because of budgetary constraints. Which of the following scaling approaches would help minimize resource exhaustion?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "Event trigger"
-        },
-        {
-          "label": "B",
-          "text": "Load trigger"
-        },
-        {
-          "label": "C",
-          "text": "Vertical scaling"
-        },
-        {
-          "label": "D",
-          "text": "Horizontal scaling"
-        }
-      ],
-      "correctAnswerText": "Vertical scaling",
-      "correctAnswers": [
-        "Vertical scaling"
-      ],
-      "correctLabels": [
-        "C"
-      ],
-      "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ event-based scaling ขยายระบบตามเหตุการณ์ เช่น queue หรือ message แต่ถ้าไม่ดู resource load อาจ scale ไม่ตรงกับภาระงานจริง แต่โจทย์ต้องการ vertical scaling เพิ่มขนาด resource ของเครื่องเดิม เช่น CPU/RAM เหมาะเมื่อแอปยังต้องรันบน node เดียว",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ load-based trigger ใช้ตัวชี้วัดอย่าง CPU, memory หรือ request rate เพื่อ scale ตามภาระงานจริง แต่โจทย์ต้องการ vertical scaling เพิ่มขนาด resource ของเครื่องเดิม เช่น CPU/RAM เหมาะเมื่อแอปยังต้องรันบน node เดียว",
-        "C": "ถูก เพราะ vertical scaling เพิ่มขนาด resource ของเครื่องเดิม เช่น CPU/RAM เหมาะเมื่อแอปยังต้องรันบน node เดียว",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ horizontal scaling เพิ่มจำนวน instance และมักใช้ load balancer กระจายทราฟฟิกเพื่อรองรับผู้ใช้มากขึ้น แต่โจทย์ต้องการ vertical scaling เพิ่มขนาด resource ของเครื่องเดิม เช่น CPU/RAM เหมาะเมื่อแอปยังต้องรันบน node เดียว"
-      },
-      "ocrText": "A cloud engineer discovers that two nodes experience resource exhaustion during the holidays. This creates a denial of service on the web application. Adding a third node is not an option because of budgetary constraints. Which of the following scaling approaches would help minimize resource exhaustion? Select one:",
-      "answerOcrText": "The correct answer is: Vertical scaling",
-      "media": [],
-      "explanation": "เฉลยคือ Vertical scaling เพราะ vertical scaling เพิ่มขนาด resource ของเครื่องเดิม เช่น CPU/RAM เหมาะเมื่อแอปยังต้องรันบน node เดียว"
-    },
-    {
-      "id": "cloud_quiz07_q008",
-      "quizId": "cloud_quiz07",
-      "quiz": "Quiz 07",
-      "number": 8,
-      "sourcePdf": "cloud_quiz07.pdf",
-      "prompt": "A company wants to use cloud resources to store historical data and guarantee fast searching and information-retrieval capabilities. Which of the following types of storage should the company provision?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "Hot"
-        },
-        {
-          "label": "B",
-          "text": "Warm"
-        },
-        {
-          "label": "C",
-          "text": "Cold"
-        },
-        {
-          "label": "D",
-          "text": "Offline"
-        }
-      ],
-      "correctAnswerText": "Hot",
-      "correctAnswers": [
-        "Hot"
-      ],
-      "correctLabels": [
-        "A"
-      ],
-      "choiceExplanations": {
-        "A": "ถูก เพราะ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ warm site/storage เตรียมบางส่วนไว้แล้ว กู้คืนได้เร็วปานกลางและต้นทุนต่ำกว่า hot แต่โจทย์ต้องการ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ cold site/storage มี resource น้อยหรือไม่มีล่วงหน้า ต้นทุนต่ำแต่ใช้เวลาฟื้นตัวนานกว่า แต่โจทย์ต้องการ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด"
-      },
-      "ocrText": "A company wants to use cloud resources to store historical data and guarantee fast searching and information-retrieval capabilities. Which of the following types of storage should the company provision? Select one. B. C. D. Hot Warm Cold Offline",
-      "answerOcrText": "The correct answer is: Hot",
-      "media": [],
-      "explanation": "เฉลยคือ Hot เพราะ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด"
-    },
-    {
-      "id": "cloud_quiz07_q009",
-      "quizId": "cloud_quiz07",
-      "quiz": "Quiz 07",
-      "number": 9,
-      "sourcePdf": "cloud_quiz07.pdf",
-      "prompt": "A cloud engineer is implementing a deployment strategy with the following requirements: • At least two environments for production and development must be supported. Changes in one environment must not impact the other environment. • The highest possible availability must be achieved. Which of the following deployment strategies should the engineer implement?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "Rolling"
-        },
-        {
-          "label": "B",
-          "text": "Blue-green"
-        },
-        {
-          "label": "C",
-          "text": "In-place"
-        },
-        {
-          "label": "D",
-          "text": "Canary"
-        }
-      ],
-      "correctAnswerText": "Blue-green",
-      "correctAnswers": [
-        "Blue-green"
-      ],
-      "correctLabels": [
-        "B"
-      ],
-      "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ rolling deployment ค่อย ๆ แทนที่ instance เดิมด้วยเวอร์ชันใหม่โดยไม่หยุดระบบทั้งหมด แต่โจทย์ต้องการ blue-green deployment มี environment สองชุดและสลับทราฟฟิกไปชุดใหม่ ช่วย rollback ได้เร็ว",
-        "B": "ถูก เพราะ blue-green deployment มี environment สองชุดและสลับทราฟฟิกไปชุดใหม่ ช่วย rollback ได้เร็ว",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ in-place deployment อัปเดตบน environment เดิม จึงง่ายแต่ rollback และ downtime อาจเสี่ยงกว่า แต่โจทย์ต้องการ blue-green deployment มี environment สองชุดและสลับทราฟฟิกไปชุดใหม่ ช่วย rollback ได้เร็ว",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ canary deployment ปล่อยเวอร์ชันใหม่ให้ผู้ใช้ส่วนน้อยก่อนเพื่อลดความเสี่ยง แต่โจทย์ต้องการ blue-green deployment มี environment สองชุดและสลับทราฟฟิกไปชุดใหม่ ช่วย rollback ได้เร็ว"
-      },
-      "ocrText": "A cloud engineer is implementing a deployment strategy with the following requirements: • At least two environments for production and development must be supported. Changes in one environment must not impact the other environment. • The highest possible availability must be achieved. Which of the following deployment strategies should the engineer implement? Select one: A. B. C. D. Rolling Blue-green In-place Canary",
-      "answerOcrText": "The correct answer is: Blue-green",
-      "media": [],
-      "explanation": "เฉลยคือ Blue-green เพราะ blue-green deployment มี environment สองชุดและสลับทราฟฟิกไปชุดใหม่ ช่วย rollback ได้เร็ว"
-    },
-    {
-      "id": "cloud_quiz07_q010",
-      "quizId": "cloud_quiz07",
-      "quiz": "Quiz 07",
-      "number": 10,
-      "sourcePdf": "cloud_quiz07.pdf",
-      "prompt": "Which of the following resources brings content near a geographic location for faster access?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "Cloud bursting"
-        },
-        {
-          "label": "B",
-          "text": "Region"
-        },
-        {
-          "label": "C",
-          "text": "Edge computing"
-        },
-        {
-          "label": "D",
-          "text": "Availability zone"
-        }
-      ],
-      "correctAnswerText": "Edge computing",
-      "correctAnswers": [
-        "Edge computing"
-      ],
-      "correctLabels": [
-        "C"
-      ],
-      "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ cloud bursting ใช้ public cloud รองรับโหลดส่วนเกินชั่วคราวจากระบบหลักเมื่อ demand พุ่งสูง แต่โจทย์ต้องการ edge computing ประมวลผลใกล้แหล่งข้อมูลเพื่อลด latency และลดการส่งข้อมูลกลับ cloud ส่วนกลาง",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ edge computing ประมวลผลใกล้แหล่งข้อมูลเพื่อลด latency และลดการส่งข้อมูลกลับ cloud ส่วนกลาง",
-        "C": "ถูก เพราะ edge computing ประมวลผลใกล้แหล่งข้อมูลเพื่อลด latency และลดการส่งข้อมูลกลับ cloud ส่วนกลาง",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ high availability ออกแบบให้ระบบยังให้บริการได้เมื่อ component บางส่วนล้มเหลว โดยใช้ redundancy และ health checks แต่โจทย์ต้องการ edge computing ประมวลผลใกล้แหล่งข้อมูลเพื่อลด latency และลดการส่งข้อมูลกลับ cloud ส่วนกลาง"
-      },
-      "ocrText": "Which of the following resources brings content near a geographic location for faster access? Select one: A. B. C. D. Cloud bursting Region Edge computing Availability zone",
-      "answerOcrText": "The correct answer is: Edge computing",
-      "media": [],
-      "explanation": "เฉลยคือ Edge computing เพราะ edge computing ประมวลผลใกล้แหล่งข้อมูลเพื่อลด latency และลดการส่งข้อมูลกลับ cloud ส่วนกลาง"
-    },
-    {
       "id": "cloud_quiz08_q001",
       "quizId": "cloud_quiz08",
       "quiz": "Quiz 08",
@@ -10144,50 +9616,6 @@
       "answerOcrText": "The correct answer is: Platform compatibility and migration strategies",
       "media": [],
       "explanation": "เฉลยคือ Platform compatibility and migration strategies เพราะ merge รวมการเปลี่ยนแปลงจากสาขาหนึ่งเข้าสู่อีกสาขา หลังผ่านการตรวจทานแล้ว"
-    },
-    {
-      "id": "cloud_quiz08_q003",
-      "quizId": "cloud_quiz08",
-      "quiz": "Quiz 08",
-      "number": 3,
-      "sourcePdf": "cloud_quiz08.pdf",
-      "prompt": "A company's engineering department is conducting a month-long test on the scalability of an in-house—developed software that requires a cluster of 100 or more servers. Which of the following models is the best to use?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "PaaS"
-        },
-        {
-          "label": "B",
-          "text": "SaaS"
-        },
-        {
-          "label": "C",
-          "text": "DBaaS"
-        },
-        {
-          "label": "D",
-          "text": "IaaS"
-        }
-      ],
-      "correctAnswerText": "IaaS",
-      "correctAnswers": [
-        "IaaS"
-      ],
-      "correctLabels": [
-        "D"
-      ],
-      "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ PaaS ให้แพลตฟอร์มสำหรับรันและ deploy โค้ด โดยผู้ใช้ไม่ต้องดูแลระบบปฏิบัติการ เซิร์ฟเวอร์ และ runtime พื้นฐานเอง แต่โจทย์ต้องการ IaaS ให้เครื่องเสมือน เครือข่าย และสตอเรจที่ผู้ใช้ควบคุมระบบปฏิบัติการและซอฟต์แวร์ได้มากกว่า PaaS/SaaS",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ SaaS คือแอปพลิเคชันสำเร็จรูปที่ผู้ให้บริการดูแลแพลตฟอร์มและแอปให้ ผู้ใช้เพียงเข้าใช้งานผ่านเครือข่าย แต่โจทย์ต้องการ IaaS ให้เครื่องเสมือน เครือข่าย และสตอเรจที่ผู้ใช้ควบคุมระบบปฏิบัติการและซอฟต์แวร์ได้มากกว่า PaaS/SaaS",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ DBaaS เป็นบริการฐานข้อมูลแบบ managed service ที่ลดงานดูแลแพตช์ สำรองข้อมูล และ availability ของฐานข้อมูล แต่โจทย์ต้องการ IaaS ให้เครื่องเสมือน เครือข่าย และสตอเรจที่ผู้ใช้ควบคุมระบบปฏิบัติการและซอฟต์แวร์ได้มากกว่า PaaS/SaaS",
-        "D": "ถูก เพราะ IaaS ให้เครื่องเสมือน เครือข่าย และสตอเรจที่ผู้ใช้ควบคุมระบบปฏิบัติการและซอฟต์แวร์ได้มากกว่า PaaS/SaaS"
-      },
-      "ocrText": "A company's engineering department is conducting a month-long test on the scalability of an in-house—developed software that requires a cluster of 100 or more servers. Which of the following models is the best to use? Select one: B. c. SaaS DBaaS",
-      "answerOcrText": "The correct answer is: IaaS",
-      "media": [],
-      "explanation": "เฉลยคือ IaaS เพราะ IaaS ให้เครื่องเสมือน เครือข่าย และสตอเรจที่ผู้ใช้ควบคุมระบบปฏิบัติการและซอฟต์แวร์ได้มากกว่า PaaS/SaaS"
     },
     {
       "id": "cloud_quiz08_q004",
@@ -10283,40 +9711,6 @@
       "answerOcrText": "The correct answers are: AES, TLS",
       "media": [],
       "explanation": "เฉลยคือ AES, TLS เพราะตัวเลือกเหล่านี้ทำงานร่วมกันตรงกับเงื่อนไขของโจทย์: การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest"
-    },
-    {
-      "id": "cloud_quiz08_q006",
-      "quizId": "cloud_quiz08",
-      "quiz": "Quiz 08",
-      "number": 6,
-      "sourcePdf": "cloud_quiz08.pdf",
-      "prompt": "A company's content management system (CMS) service runs on an IaaS cluster on a public cloud. The CMS service is frequently targeted by a malicious threat actor using DDoS. Which of the following should a cloud engineer monitor to identify attacks?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "Network flow logs"
-        },
-        {
-          "label": "B",
-          "text": "Endpoint detection and response logs"
-        }
-      ],
-      "correctAnswerText": "Network flow logs",
-      "correctAnswers": [
-        "Network flow logs"
-      ],
-      "correctLabels": [
-        "A"
-      ],
-      "choiceExplanations": {
-        "A": "ถูก เพราะ IaaS ให้เครื่องเสมือน เครือข่าย และสตอเรจที่ผู้ใช้ควบคุมระบบปฏิบัติการและซอฟต์แวร์ได้มากกว่า PaaS/SaaS",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ IaaS ให้เครื่องเสมือน เครือข่าย และสตอเรจที่ผู้ใช้ควบคุมระบบปฏิบัติการและซอฟต์แวร์ได้มากกว่า PaaS/SaaS"
-      },
-      "ocrText": "A company's content management system (CMS) service runs on an IaaS cluster on a public cloud. The CMS service is frequently targeted by a malicious threat actor using DDoS. Which of the following should a cloud engineer monitor to identify attacks? Select one: A. Network flow logs B. Endpoint detection and response logs",
-      "answerOcrText": "The correct answer is: Network flow logs",
-      "media": [],
-      "explanation": "เฉลยคือ Network flow logs เพราะ IaaS ให้เครื่องเสมือน เครือข่าย และสตอเรจที่ผู้ใช้ควบคุมระบบปฏิบัติการและซอฟต์แวร์ได้มากกว่า PaaS/SaaS"
     },
     {
       "id": "cloud_quiz08_q007",
@@ -10615,50 +10009,6 @@
       "answerOcrText": "The correct answer is: Add USER myapp to the Dockerfile and rebuild the container.",
       "media": [],
       "explanation": "เฉลยคือ Add USER myapp to the Dockerfile and rebuild the container เพราะ container แพ็กแอปพร้อม dependency ให้รันได้สม่ำเสมอบน environment ต่าง ๆ โดยใช้ kernel ร่วมกับ host"
-    },
-    {
-      "id": "cloud_quiz08_q014",
-      "quizId": "cloud_quiz08",
-      "quiz": "Quiz 08",
-      "number": 14,
-      "sourcePdf": "cloud_quiz08.pdf",
-      "prompt": "Which of the following refers to the idea that data should stay within certain borders or territories?",
-      "mode": "single",
-      "choices": [
-        {
-          "label": "A",
-          "text": "Data classification"
-        },
-        {
-          "label": "B",
-          "text": "Data retention"
-        },
-        {
-          "label": "C",
-          "text": "Data sovereignty"
-        },
-        {
-          "label": "D",
-          "text": "Data ownership"
-        }
-      ],
-      "correctAnswerText": "Data sovereignty",
-      "correctAnswers": [
-        "Data sovereignty"
-      ],
-      "correctLabels": [
-        "C"
-      ],
-      "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "C": "ถูก เพราะ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ"
-      },
-      "ocrText": "Which of the following refers to the idea that data should stay within certain borders or territories? Select one. A. B. C. D. Data classification Data retention Data sovereignty Data ownership",
-      "answerOcrText": "The correct answer is: Data sovereignty",
-      "media": [],
-      "explanation": "เฉลยคือ Data sovereignty เพราะ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ"
     },
     {
       "id": "cloud_quiz08_q015",
