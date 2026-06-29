@@ -235,9 +235,14 @@ function renderChoices(item, locked) {
   const limitReached = !locked && maxSelections > 1 && selectedLabels.size >= maxSelections;
 
   if (state.shuffleChoices && !item.shuffledChoices) {
-    item.shuffledChoices = shuffleArray(item.choices);
-  } else if (!state.shuffleChoices) {
-    item.shuffledChoices = item.choices;
+    const originalLabels = item.choices.map(c => c.label);
+    const shuffledItems = shuffleArray(item.choices);
+    item.shuffledChoices = shuffledItems.map((choice, index) => ({
+      ...choice,
+      displayLabel: originalLabels[index]
+    }));
+  } else if (!state.shuffleChoices && !item.shuffledChoices) {
+    item.shuffledChoices = item.choices.map(c => ({...c, displayLabel: c.label}));
   }
   
   const choicesToRender = item.shuffledChoices || item.choices;
@@ -252,7 +257,7 @@ function renderChoices(item, locked) {
     if (locked && selectedLabels.has(choice.label) && !correctLabels.has(choice.label)) button.classList.add("wrong");
     if (limitReached && !selectedLabels.has(choice.label)) button.classList.add("limited");
     button.disabled = locked || (limitReached && !selectedLabels.has(choice.label));
-    button.innerHTML = `<span class="choice-label">${escapeHtml(choice.label)}</span><span>${escapeHtml(choice.text || `Option ${choice.label}`)}</span>`;
+    button.innerHTML = `<span class="choice-label">${escapeHtml(choice.displayLabel || choice.label)}</span><span>${escapeHtml(choice.text || `Option ${choice.label}`)}</span>`;
     button.addEventListener("click", () => toggleChoice(item, choice.label));
     els.choiceList.appendChild(button);
   });
@@ -307,14 +312,16 @@ function escapeHtml(value) {
 
 function renderChoiceExplanations(item) {
   const explanations = item.choiceExplanations || {};
-  const rows = item.choices
+  const choicesToRender = item.shuffledChoices || item.choices;
+  const rows = choicesToRender
     .map((choice) => {
       const text = explanations[choice.label];
       if (!text) return "";
       const choiceText = choice.text || `Option ${choice.label}`;
+      const displayLabel = choice.displayLabel || choice.label;
       return `
         <li>
-          <strong>${escapeHtml(choice.label)}. ${escapeHtml(choiceText)}</strong>
+          <strong>${escapeHtml(displayLabel)}. ${escapeHtml(choiceText)}</strong>
           <span>${escapeHtml(text)}</span>
         </li>
       `;
@@ -331,10 +338,20 @@ function renderChoiceExplanations(item) {
   `;
 }
 
+function getDisplayLabels(item, logicalLabels) {
+  const choices = item.shuffledChoices || item.choices;
+  return logicalLabels.map(label => {
+    const choice = choices.find(c => c.label === label);
+    return choice ? (choice.displayLabel || choice.label) : label;
+  }).join(", ");
+}
+
 function showResult(item, correct) {
   const correctText = item.correctAnswerText || item.correctAnswers.join(", ");
   const explanation = item.explanation || "คำตอบนี้เหมาะที่สุดตามแนวคิดของหัวข้อที่โจทย์ถาม";
-  const selectedText = [...(state.answers[answerKey(item)]?.selected || state.selected)].join(", ") || "-";
+  
+  const logicalSelected = [...(state.answers[answerKey(item)]?.selected || state.selected)];
+  const selectedText = getDisplayLabels(item, logicalSelected) || "-";
 
   els.resultBox.className = `result ${correct ? "ok" : "bad"}`;
   els.resultBox.innerHTML = `
