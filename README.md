@@ -1,77 +1,88 @@
-# CloudPlus Quiz Practice
+<div align="center">
+  <h1>☁️ CloudPlus Quiz Practice</h1>
+  <p><strong>แพลตฟอร์มฝึกทำข้อสอบ CompTIA Cloud+ แสนสะดวก ครบจบในที่เดียว</strong></p>
+  
+  [![Website](https://img.shields.io/badge/Website-Live-brightgreen?style=for-the-badge&logo=github)](https://sleepingsong.github.io/exam_test_cloudplus/)
+  [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://sleepingsong.github.io/exam_test_cloudplus/)
+  [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://sleepingsong.github.io/exam_test_cloudplus/)
+  [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://sleepingsong.github.io/exam_test_cloudplus/)
+</div>
 
-เว็บฝึกทำข้อสอบ Cloud+ จากชุด PDF `cloud_quiz01` ถึง `cloud_quiz12` พร้อมระบบตรวจคำตอบและแสดงเฉลยจากไฟล์ต้นฉบับ
+<br/>
 
-## เปิดใช้งาน
+เว็บฝึกทำข้อสอบ Cloud+ ที่ถูกสร้างขึ้นจากชุดไฟล์ PDF `cloud_quiz01` ถึง `cloud_quiz12` เพื่อเป็นเครื่องมือทบทวนความรู้ก่อนสอบ มาพร้อมกับระบบตรวจคำตอบทันที และคำอธิบายเฉลยที่เข้าใจง่าย
 
-เข้าใช้งานเว็บได้ที่:
+## 🚀 เริ่มต้นใช้งาน (Live Preview)
 
-[https://sleepingsong.github.io/exam_test_cloudplus/](https://sleepingsong.github.io/exam_test_cloudplus/)
+สามารถเข้าใช้งานเว็บได้ทันทีที่:  
+🔗 **[https://sleepingsong.github.io/exam_test_cloudplus/](https://sleepingsong.github.io/exam_test_cloudplus/)**
 
-## ความสามารถหลัก
+---
 
-- รวมข้อสอบทั้งหมด 319 ข้อจากไฟล์ PDF ต้นฉบับ
-- แสดงภาพคำถามที่ crop จาก PDF โดยตรง เหมาะกับข้อที่มีรูปภาพ ตาราง โค้ด หรือ layout พิเศษ
-- ตรวจคำตอบได้ทันทีหลังเลือกตัวเลือก
-- แสดงเฉลยเป็นข้อความ โดยอ้างอิงจากแถบเฉลยใน PDF ต้นฉบับ
-- มีคำอธิบายตัวเลือกอื่นแบบสั้น ๆ ว่าทำไมไม่ใช่คำตอบที่ถูก
-- เลือกชุดข้อสอบได้ตาม quiz
-- ค้นหาข้อสอบด้วย keyword, คำตอบ หรือชื่อไฟล์ต้นทาง
-- จำผลการทำข้อสอบไว้ใน browser ด้วย `localStorage`
-- รองรับ Light Mode และ Dark Mode
-- ใช้ฟอนต์ Sarabun สำหรับภาษาไทย และ Inter สำหรับภาษาอังกฤษ
+## ✨ ความสามารถหลัก (Features)
 
-## โครงสร้างโปรเจกต์
+- 📚 **ข้อสอบรวม 319 ข้อ**: นำมาจากไฟล์ PDF ต้นฉบับ พร้อมให้คุณฝึกฝน
+- 🔀 **สุ่มคำถามและตัวเลือก (Shuffle)**: ตัวเลือกสุ่มลำดับได้แบบไม่จำเจ ช่วยลดความเคยชินกับตำแหน่งตัวเลือก
+- 💡 **Tooltips คำศัพท์เฉพาะ**: ไฮไลท์คำศัพท์ยากหรือศัพท์เทคนิคในโจทย์ เมื่อชี้จะแสดงความหมายทันที!
+- ⚡ **Auto-Submit & ตรวจคำตอบทันที**: แค่คลิกเลือกคำตอบ ระบบจะตรวจและแสดงผลเฉลยให้ทันที
+- 🖼️ **รองรับรูปภาพ**: แสดงภาพที่ดึงจาก PDF โดยตรง สำหรับข้อที่ต้องดู Topology, Code หรือ Diagram
+- 📝 **คำอธิบายตัวเลือก (Explanations)**: อธิบายเหตุผลของแต่ละตัวเลือก ไม่ใช่บอกแค่ว่าถูกหรือผิด
+- 🌗 **Light/Dark Mode**: สลับธีมสว่างหรือมืดได้ตามใจชอบ โดยค่าเริ่มต้นคือ **Light Mode**
+- 💾 **ระบบจดจำสถานะ**: จำผลการทำข้อสอบเก่าของคุณไว้ในเบราว์เซอร์ผ่าน `localStorage`
+
+---
+
+## 📁 โครงสร้างโปรเจกต์ (Project Structure)
+
+โปรเจกต์นี้เขียนด้วย **Vanilla HTML/CSS/JS** เพียว ๆ ไม่มี dependency ยุ่งยาก:
 
 ```text
 .
-├── index.html              # หน้าเว็บหลักสำหรับ GitHub Pages
-├── styles.css              # สไตล์และธีม Light/Dark
-├── app.js                  # logic ของเว็บฝึกทำข้อสอบ
+├── index.html              # หน้าหลักของเว็บไซต์
+├── styles.css              # ไฟล์ CSS รองรับ Light & Dark Theme อย่างสวยงาม
+├── app.js                  # ไฟล์รวม Logic การทำงานของข้อสอบ การสุ่ม และ Tooltips
 ├── data/
-│   └── questions.json      # ฐานข้อมูลข้อสอบแบบ JSON
+│   └── questions.json      # ฐานข้อมูลข้อสอบทั้งหมดในรูปแบบ JSON
 ├── assets/
-│   └── media/              # ภาพประกอบเฉพาะข้อที่ต้องใช้ภาพ
+│   └── media/              # รูปภาพประกอบเฉพาะข้อที่ดึงมาจาก PDF
 └── tools/
-    └── build_quiz_data.py  # สคริปต์สร้าง JSON และภาพจาก PDF
+    └── build_quiz_data.py  # Python Script สำหรับสร้าง JSON และรูปภาพจากไฟล์ PDF
 ```
 
-## แหล่งข้อมูล
+---
 
-ข้อมูลข้อสอบถูกสร้างจากไฟล์ในโฟลเดอร์ `Question/`:
+## ⚙️ การสร้างฐานข้อมูลใหม่ (Data Generation)
 
-- ใช้เฉพาะ `cloud_quiz01.pdf` ถึง `cloud_quiz12.pdf`
-- ไม่ใช้ `cloud_quiz_final.pdf`
-- คำตอบที่ถูกต้องอ้างอิงจากแถบเฉลยใน PDF ต้นฉบับ
+ข้อมูลในเว็บไซต์ถูกสร้างขึ้นจากไฟล์ในโฟลเดอร์ `Question/` แบบอัตโนมัติ (ไม่รวม `cloud_quiz_final.pdf`)  
+*หมายเหตุ: โฟลเดอร์ Question/ ถูกละเว้นการ push ขึ้น GitHub เพื่อลดขนาด repository*
 
-หมายเหตุ: โฟลเดอร์ `Question/` ไม่ถูก push ขึ้น GitHub เพราะเป็นไฟล์ต้นฉบับขนาดใหญ่และไม่จำเป็นต่อการเปิดเว็บ หลังจากสร้างข้อมูลแล้วเว็บใช้เพียง `data/` และ `assets/`
-
-## การสร้างข้อมูลใหม่
-
-หากมีการแก้ไขหรือเพิ่มไฟล์ PDF ต้นฉบับ สามารถ regenerate ข้อมูลได้ด้วยสคริปต์นี้:
+หากคุณแก้ไขหรือมีไฟล์ PDF ใหม่ ให้ทำการรันสคริปต์นี้เพื่ออัปเดตระบบข้อสอบ:
 
 ```powershell
-$py='C:\Users\prang\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
-& $py .\tools\build_quiz_data.py
+# (ใช้ Python environment ของคุณ)
+python .\tools\build_quiz_data.py
 ```
 
-ผลลัพธ์ที่ได้:
+ผลลัพธ์ที่ได้คือไฟล์ `data/questions.json` และภาพในโฟลเดอร์ `assets/media/`
 
-- `data/questions.json`
-- `assets/media/*.png`
+---
 
-## การรันในเครื่อง
+## 💻 การรันโปรเจกต์ในเครื่อง (Local Setup)
 
-เปิด local server จากโฟลเดอร์โปรเจกต์:
+เปิด Local server ง่าย ๆ ได้ด้วย Python:
 
 ```powershell
 python -m http.server 8000
 ```
+จากนั้นเปิดเบราว์เซอร์ไปที่: 👉 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
-แล้วเปิด:
+---
 
-[http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+## ☁️ การ Deploy
 
-## การ deploy
+โปรเจกต์นี้เป็น **Static Site** อย่างสมบูรณ์ จึงสามารถนำขึ้นโฮสต์ผ่าน **GitHub Pages** ได้โดยตรงจาก Branch `main` แบบไร้รอยต่อ
 
-โปรเจกต์นี้เป็น static site ทั้งหมด จึง deploy ผ่าน GitHub Pages ได้โดยตรงจาก branch `main`
+<div align="center">
+  <br/>
+  <p><i>สร้างมาเพื่อฝึกฝนและพิชิตใบรับรอง Cloud+ ไปด้วยกัน!</i> 🚀</p>
+</div>
