@@ -7,13 +7,18 @@ const state = {
   activeQuizId: null,
   activeQuizName: "",
   answers: JSON.parse(localStorage.getItem("cloudplus-answers") || "{}"),
-  theme: localStorage.getItem("cloudplus-theme") || "dark",
+  theme: localStorage.getItem("cloudplus-theme") || "light",
+  shuffleQuestions: false,
+  shuffleChoices: false,
 };
 
 const els = {
   startScreen: document.getElementById("startScreen"),
   quizScreen: document.getElementById("quizScreen"),
-  quizCards: document.getElementById("quizCards"),
+  startForm: document.getElementById("startForm"),
+  quizSelect: document.getElementById("quizSelect"),
+  shuffleQuestions: document.getElementById("shuffleQuestions"),
+  shuffleChoices: document.getElementById("shuffleChoices"),
   loading: document.getElementById("loading"),
   questionView: document.getElementById("questionView"),
   sourceLabel: document.getElementById("sourceLabel"),
@@ -23,12 +28,43 @@ const els = {
   selectionHint: document.getElementById("selectionHint"),
   questionMedia: document.getElementById("questionMedia"),
   choiceList: document.getElementById("choiceList"),
-  submitBtn: document.getElementById("submitBtn"),
   resultBox: document.getElementById("resultBox"),
   prevBtn: document.getElementById("prevBtn"),
   nextBtn: document.getElementById("nextBtn"),
   themeToggle: document.getElementById("themeToggle"),
 };
+
+const glossary = {
+  "IaaS": "Infrastructure as a Service",
+  "PaaS": "Platform as a Service",
+  "SaaS": "Software as a Service",
+  "VPC": "Virtual Private Cloud",
+  "IP tables": "โปรแกรมสำหรับผู้ดูแลระบบ เพื่อกำหนดค่า firewall ของ Linux kernel",
+  "Remediation": "การแก้ไข หรือการลดความเสี่ยงจากช่องโหว่",
+  "Vulnerability": "ช่องโหว่ หรือจุดอ่อนในระบบ",
+  "Assessment": "การประเมิน หรือการตรวจสอบ",
+  "RTO": "Recovery Time Objective - เวลาเป้าหมายในการกู้คืนระบบ",
+  "RPO": "Recovery Point Objective - ปริมาณข้อมูลเป้าหมายที่ยอมสูญเสียได้",
+  "DRP": "Disaster Recovery Plan - แผนรับมือภัยพิบัติ"
+};
+
+function highlightTerms(text) {
+  let result = escapeHtml(text || "");
+  for (const [term, def] of Object.entries(glossary)) {
+    const regex = new RegExp(`\\b${term}\\b`, "gi");
+    result = result.replace(regex, `<span class="term-highlight" data-tooltip="${def}">$&</span>`);
+  }
+  return result;
+}
+
+function shuffleArray(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
 
 function setTheme(theme) {
   state.theme = theme;
@@ -92,26 +128,19 @@ function renderStartScreen() {
     quizMap.get(item.quizId).count += 1;
   });
 
-  const cards = [
-    { id: "all", name: "ทำข้อสอบทั้งหมด", count: state.all.length, description: "รวมทุกชุดข้อสอบไว้ในรอบเดียว" },
+  const options = [
+    { id: "all", name: "ทำข้อสอบทั้งหมด", count: state.all.length },
     ...[...quizMap.values()].map((quiz) => ({
       ...quiz,
-      description: `${quiz.count} ข้อจาก ${quiz.name}`,
     })),
   ];
 
-  els.quizCards.innerHTML = "";
-  cards.forEach((quiz) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "quiz-card";
-    button.innerHTML = `
-      <span>${quiz.name}</span>
-      <strong>${quiz.count} ข้อ</strong>
-      <small>${quiz.description}</small>
-    `;
-    button.addEventListener("click", () => startQuiz(quiz.id, quiz.name));
-    els.quizCards.appendChild(button);
+  els.quizSelect.innerHTML = "";
+  options.forEach((quiz) => {
+    const option = document.createElement("option");
+    option.value = quiz.id;
+    option.textContent = `${quiz.name} (${quiz.count} ข้อ)`;
+    els.quizSelect.appendChild(option);
   });
 }
 
@@ -137,8 +166,12 @@ function backToStart() {
 }
 
 function applyFilters() {
-  state.filtered = [...state.baseSet];
-  state.current = Math.min(state.current, Math.max(0, state.filtered.length - 1));
+  let filtered = [...state.baseSet];
+  if (state.shuffleQuestions) {
+    filtered = shuffleArray(filtered);
+  }
+  state.filtered = filtered;
+  state.current = 0;
   render();
 }
 
@@ -182,12 +215,11 @@ function render() {
   els.sourceLabel.textContent = `${item.quiz} • ${item.sourcePdf}`;
   els.progressLabel.textContent = `${state.current + 1} / ${state.filtered.length}`;
   els.questionTitle.textContent = `ข้อ ${item.number}`;
-  els.questionPrompt.textContent = item.prompt || "อ่านโจทย์จากข้อความและภาพประกอบด้านล่าง";
+  els.questionPrompt.innerHTML = highlightTerms(item.prompt) || "อ่านโจทย์จากข้อความและภาพประกอบด้านล่าง";
   updateSelectionHint(item);
   renderMedia(item);
   renderChoices(item, Boolean(saved));
 
-  els.submitBtn.disabled = !hasEnoughSelections(item) || Boolean(saved);
   els.nextBtn.disabled = state.current >= state.filtered.length - 1 || !hasConfirmedCurrent();
   els.prevBtn.disabled = state.current <= 0;
 
@@ -202,7 +234,15 @@ function renderChoices(item, locked) {
   const maxSelections = requiredSelections(item);
   const limitReached = !locked && maxSelections > 1 && selectedLabels.size >= maxSelections;
 
-  item.choices.forEach((choice) => {
+  if (state.shuffleChoices && !item.shuffledChoices) {
+    item.shuffledChoices = shuffleArray(item.choices);
+  } else if (!state.shuffleChoices) {
+    item.shuffledChoices = item.choices;
+  }
+  
+  const choicesToRender = item.shuffledChoices || item.choices;
+
+  choicesToRender.forEach((choice) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "choice";
@@ -232,7 +272,10 @@ function toggleChoice(item, label) {
   }
   renderChoices(item, false);
   updateSelectionHint(item);
-  els.submitBtn.disabled = !hasEnoughSelections(item);
+  
+  if (hasEnoughSelections(item)) {
+    submitAnswer();
+  }
 }
 
 function isCorrect(item) {
@@ -250,7 +293,6 @@ function submitAnswer() {
   renderChoices(item, true);
   showResult(item, correct, true);
   renderStats();
-  els.submitBtn.disabled = true;
   els.nextBtn.disabled = state.current >= state.filtered.length - 1;
 }
 
@@ -321,10 +363,20 @@ async function init() {
     state.current = Math.min(state.filtered.length - 1, state.current + 1);
     render();
   });
-  els.submitBtn.addEventListener("click", submitAnswer);
+  
+  els.startForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const quizId = els.quizSelect.value;
+    const option = els.quizSelect.options[els.quizSelect.selectedIndex];
+    const quizName = option.textContent.split(" (")[0];
+    state.shuffleQuestions = els.shuffleQuestions.checked;
+    state.shuffleChoices = els.shuffleChoices.checked;
+    startQuiz(quizId, quizName);
+  });
+  
   els.themeToggle.addEventListener("click", () => setTheme(state.theme === "dark" ? "light" : "dark"));
 }
 
 init().catch((error) => {
-  els.quizCards.innerHTML = `<div class="notice">โหลดข้อมูลไม่สำเร็จ: ${error.message}</div>`;
+  els.startScreen.innerHTML = `<div class="notice">โหลดข้อมูลไม่สำเร็จ: ${error.message}</div>`;
 });

@@ -30,7 +30,21 @@
           <h2>เลือกชุดที่ต้องการฝึก แล้วเริ่มทำข้อสอบ</h2>
           <p>เลือกทำเป็นรายชุด หรือทำข้อสอบทั้งหมดรวมกัน ระบบจะตรวจคำตอบหลังจากกดยืนยัน และแสดงคำอธิบายของคำตอบทันที</p>
         </div>
-        <div id="quizCards" class="quiz-cards" aria-live="polite"></div>
+        <form id="startForm" class="start-form">
+          <div class="form-group">
+            <label for="quizSelect">ชุดข้อสอบ:</label>
+            <select id="quizSelect" class="form-control"></select>
+          </div>
+          <div class="form-group checkbox-group">
+            <label>
+              <input type="checkbox" id="shuffleQuestions" /> สุ่มลำดับคำถาม
+            </label>
+            <label>
+              <input type="checkbox" id="shuffleChoices" /> สุ่มตัวเลือก
+            </label>
+          </div>
+          <button type="submit" class="start-btn">เริ่มทำข้อสอบ</button>
+        </form>
       </section>
 
       <section id="quizScreen" class="layout" hidden>
@@ -48,7 +62,6 @@
             <div id="choiceList" class="choices"></div>
             <div class="actions row">
               <button id="prevBtn" class="ghost" type="button">ก่อนหน้า</button>
-              <button id="submitBtn" type="button">ยืนยันคำตอบ</button>
               <button id="nextBtn" type="button">ข้อต่อไป</button>
             </div>
             <section id="resultBox" class="result" hidden></section>
