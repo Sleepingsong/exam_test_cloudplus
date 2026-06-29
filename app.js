@@ -35,17 +35,37 @@ const els = {
 };
 
 const glossary = {
-  "IaaS": "Infrastructure as a Service",
-  "PaaS": "Platform as a Service",
-  "SaaS": "Software as a Service",
-  "VPC": "Virtual Private Cloud",
+  "IaaS": "Infrastructure as a Service - บริการโครงสร้างพื้นฐานไอที (เช่น เซิร์ฟเวอร์, สตอเรจ, เครือข่าย) บนคลาวด์",
+  "PaaS": "Platform as a Service - บริการแพลตฟอร์มสำหรับนักพัฒนา (เช่น ฐานข้อมูล, รันไทม์) เพื่อสร้างแอปพลิเคชัน",
+  "SaaS": "Software as a Service - บริการซอฟต์แวร์ที่ใช้งานผ่านอินเทอร์เน็ตโดยไม่ต้องติดตั้ง",
+  "VPC": "Virtual Private Cloud - เครือข่ายส่วนตัวเสมือนในระบบคลาวด์ที่แยกขาดจากลูกค้ารายอื่น",
+  "SLA": "Service Level Agreement - ข้อตกลงระดับบริการระหว่างผู้ให้บริการและลูกค้าที่ระบุคุณภาพและ Uptime",
+  "HA": "High Availability - ความพร้อมใช้งานสูง ระบบที่ออกแบบมาให้ทำงานต่อเนื่องและลด Downtime",
+  "Scalability": "ความสามารถของระบบในการขยาย (Scale-up) หรือเพิ่มจำนวน (Scale-out) เพื่อรองรับโหลด",
+  "Elasticity": "ความยืดหยุ่นในการเพิ่มหรือลดทรัพยากรคลาวด์แบบอัตโนมัติตามปริมาณการใช้งานจริง",
+  "Hypervisor": "ซอฟต์แวร์หรือฮาร์ดแวร์ที่ใช้สร้างและบริหารจัดการ Virtual Machines (VMs)",
+  "VPN": "Virtual Private Network - เครือข่ายส่วนตัวเสมือนที่เข้ารหัสข้อมูลระหว่างการส่ง",
+  "CDN": "Content Delivery Network - เครือข่ายเซิร์ฟเวอร์กระจายทั่วโลกเพื่อส่งเนื้อหาให้ผู้ใช้ได้รวดเร็วขึ้น",
+  "IAM": "Identity and Access Management - ระบบบริหารจัดการตัวตนและสิทธิ์การเข้าถึงทรัพยากร",
+  "Load Balancer": "ตัวกระจายโหลด หรือการส่งทราฟฟิกเครือข่ายไปยังเซิร์ฟเวอร์หลายตัวให้สมดุล",
+  "BCP": "Business Continuity Plan - แผนความต่อเนื่องทางธุรกิจ เพื่อให้องค์กรทำงานต่อได้เมื่อมีเหตุขัดข้อง",
+  "RTO": "Recovery Time Objective - ระยะเวลาสูงสุดที่ยอมรับได้ในการกู้คืนระบบหลังเกิดเหตุ",
+  "RPO": "Recovery Point Objective - ปริมาณข้อมูลเป้าหมาย (ระยะเวลา) ที่ยอมรับได้หากสูญหาย",
+  "DRP": "Disaster Recovery Plan - แผนรับมือภัยพิบัติและขั้นตอนกู้คืนระบบไอที",
+  "WAF": "Web Application Firewall - ไฟร์วอลล์สำหรับป้องกันแอปพลิเคชันเว็บจากการโจมตี (เช่น SQLi, XSS)",
+  "API": "Application Programming Interface - ช่องทางหรือโปรโตคอลให้ซอฟต์แวร์สื่อสารกันได้",
+  "CASB": "Cloud Access Security Broker - จุดควบคุมนโยบายความปลอดภัยระหว่างผู้ใช้งานกับระบบคลาวด์",
+  "DDoS": "Distributed Denial of Service - การโจมตีโดยส่งทราฟฟิกมหาศาลจากหลายเครื่องเพื่อให้ระบบล่ม",
+  "SAN": "Storage Area Network - เครือข่ายความเร็วสูงเฉพาะทางสำหรับจัดเก็บข้อมูลแบบ Block",
+  "NAS": "Network Attached Storage - อุปกรณ์หรือระบบแชร์ไฟล์ในเครือข่าย (File-level storage)",
+  "IOPS": "Input/Output Operations Per Second - หน่วยวัดประสิทธิภาพความเร็วในการอ่าน/เขียนของ Storage",
+  "CI\/CD": "Continuous Integration / Continuous Deployment - กระบวนการทดสอบและปล่อยซอฟต์แวร์แบบอัตโนมัติ",
+  "SDN": "Software-Defined Networking - การจัดการเครือข่ายโดยแยกส่วนควบคุม (Control Plane) ไปอยู่ที่ซอฟต์แวร์",
+  "VDI": "Virtual Desktop Infrastructure - โครงสร้างพื้นฐานสำหรับให้บริการเดสก์ท็อปเสมือน (Virtual Desktop)",
   "IP tables": "โปรแกรมสำหรับผู้ดูแลระบบ เพื่อกำหนดค่า firewall ของ Linux kernel",
-  "Remediation": "การแก้ไข หรือการลดความเสี่ยงจากช่องโหว่",
-  "Vulnerability": "ช่องโหว่ หรือจุดอ่อนในระบบ",
-  "Assessment": "การประเมิน หรือการตรวจสอบ",
-  "RTO": "Recovery Time Objective - เวลาเป้าหมายในการกู้คืนระบบ",
-  "RPO": "Recovery Point Objective - ปริมาณข้อมูลเป้าหมายที่ยอมสูญเสียได้",
-  "DRP": "Disaster Recovery Plan - แผนรับมือภัยพิบัติ"
+  "Remediation": "การแก้ไข หรือการบรรเทาความเสี่ยงจากช่องโหว่",
+  "Vulnerability": "ช่องโหว่ หรือจุดอ่อนในระบบที่อาจถูกนำไปใช้โจมตีได้",
+  "Assessment": "การประเมิน ตรวจสอบ หรือวิเคราะห์หาความเสี่ยง"
 };
 
 function highlightTerms(text) {
