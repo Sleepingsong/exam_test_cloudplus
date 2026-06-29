@@ -665,6 +665,10 @@
       "mode": "single",
       "choices": [
         {
+          "label": "A",
+          "text": "IPS"
+        },
+        {
           "label": "B",
           "text": "OLP"
         },
@@ -685,14 +689,15 @@
         "B"
       ],
       "choiceExplanations": {
-        "B": "ถูก เพราะ health check ใช้ตรวจสถานะแอปจากผลตอบกลับ เช่น HTTP status code แล้วสั่ง remediation อย่างหยุดหรือ restart VM เมื่อไม่ healthy",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ACL เป็นรายการกฎอนุญาต/ปฏิเสธการเข้าถึง เหมาะกับการคุมทราฟฟิกหรือสิทธิ์แบบระบุรายการ แต่โจทย์ต้องการ health check ใช้ตรวจสถานะแอปจากผลตอบกลับ เช่น HTTP status code แล้วสั่ง remediation อย่างหยุดหรือ restart VM เมื่อไม่ healthy",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ WAF ป้องกันทราฟฟิกระดับเว็บแอป เช่น SQL injection หรือ XSS แต่ไม่ได้แทนการกำหนดสิทธิ์เครือข่ายทั่วไปเสมอไป แต่โจทย์ต้องการ health check ใช้ตรวจสถานะแอปจากผลตอบกลับ เช่น HTTP status code แล้วสั่ง remediation อย่างหยุดหรือ restart VM เมื่อไม่ healthy"
+        "A": "Not the source PDF answer. The source answer is: OLP",
+        "B": "Correct according to the source PDF answer strip: OLP",
+        "C": "Not the source PDF answer. The source answer is: OLP",
+        "D": "Not the source PDF answer. The source answer is: OLP"
       },
       "ocrText": "A healthcare organization must follow strict compliance requirements to ensure that PII is not leaked. The cloud administrator needs to ensure the cloud email system can support this requirement Which Of the following should the organization enable? Select one: B. c. D. OLP ACL WAF",
       "answerOcrText": "The correct answer is: OLP",
       "media": [],
-      "explanation": "เฉลยคือ OLP เพราะ health check ใช้ตรวจสถานะแอปจากผลตอบกลับ เช่น HTTP status code แล้วสั่ง remediation อย่างหยุดหรือ restart VM เมื่อไม่ healthy"
+      "explanation": "The source PDF answer strip lists: OLP."
     },
     {
       "id": "cloud_quiz01_q016",
@@ -814,6 +819,10 @@
         {
           "label": "C",
           "text": "PC"
+        },
+        {
+          "label": "D",
+          "text": "SSH"
         }
       ],
       "correctAnswerText": "PC",
@@ -824,14 +833,15 @@
         "C"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ WAF ป้องกันทราฟฟิกระดับเว็บแอป เช่น SQL injection หรือ XSS แต่ไม่ได้แทนการกำหนดสิทธิ์เครือข่ายทั่วไปเสมอไป แต่โจทย์ต้องการ public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ACL เป็นรายการกฎอนุญาต/ปฏิเสธการเข้าถึง เหมาะกับการคุมทราฟฟิกหรือสิทธิ์แบบระบุรายการ แต่โจทย์ต้องการ public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ",
-        "C": "ถูก เพราะ public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ"
+        "A": "Not the source PDF answer. The source answer is: PC",
+        "B": "Not the source PDF answer. The source answer is: PC",
+        "C": "Correct according to the source PDF answer strip: PC",
+        "D": "Not the source PDF answer. The source answer is: PC"
       },
       "ocrText": "An organization's internal security team mandated that public cloud resources must be accessible only by a corporate VPN and not by direct public internet access. Which Of the following would achieve this objective? Select one: A. C. WAF ACL",
       "answerOcrText": "The correct answer is: PC",
       "media": [],
-      "explanation": "เฉลยคือ PC เพราะ public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ"
+      "explanation": "The source PDF answer strip lists: PC."
     },
     {
       "id": "cloud_quiz01_q019",
@@ -844,7 +854,11 @@
       "choices": [
         {
           "label": "A",
-          "text": "Dedicated connection VPN"
+          "text": "Dedicated connection"
+        },
+        {
+          "label": "B",
+          "text": "VPN"
         },
         {
           "label": "C",
@@ -860,17 +874,18 @@
         "VPN"
       ],
       "correctLabels": [
-        "A"
+        "B"
       ],
       "choiceExplanations": {
-        "A": "ถูก เพราะ public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ACL เป็นรายการกฎอนุญาต/ปฏิเสธการเข้าถึง เหมาะกับการคุมทราฟฟิกหรือสิทธิ์แบบระบุรายการ แต่โจทย์ต้องการ public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ"
+        "A": "Not the source PDF answer. The source answer is: VPN",
+        "B": "Correct according to the source PDF answer strip: VPN",
+        "C": "Not the source PDF answer. The source answer is: VPN",
+        "D": "Not the source PDF answer. The source answer is: VPN"
       },
       "ocrText": "A cloud engineer is extending on-premises services to a public cloud. The following design requirements must be considered in the overall solution: • The ability to remotely connect systems from both environments • No IP address conflicts or overlap • Cost-effectiveness Which of the following cloud network concepts best meets these requirements? Select one: A. c. D. Dedicated connection VPN VLAN ACL",
       "answerOcrText": "The correct answer is: VPN",
       "media": [],
-      "explanation": "เฉลยคือ VPN เพราะ public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ"
+      "explanation": "The source PDF answer strip lists: VPN."
     },
     {
       "id": "cloud_quiz01_q020",
@@ -2428,7 +2443,7 @@
       "quiz": "Quiz 02",
       "number": 14,
       "sourcePdf": "cloud_quiz02.pdf",
-      "prompt": "[Prompt missing from OCR. Review cloud_quiz02.pdf question 14.]",
+      "prompt": "A junior cloud administrator was recently promoted to cloud administrator and has been added to the cloud administrator group. The cloud administrator group is the only one that can access the engineering VM. The new administrator unsuccessfully attempts to access the engineering VM. However, the other administrators can access it without issue. Which of the following is the best way to identify the root cause?",
       "mode": "single",
       "choices": [
         {
@@ -2437,11 +2452,11 @@
         },
         {
           "label": "B",
-          "text": "Reviewing the administrators permissions to access the engineering VM"
+          "text": "Reviewing the administrator's permissions to access the engineering VM"
         },
         {
           "label": "C",
-          "text": "Allowing connections from 0.0.0.070 to the engineering VM"
+          "text": "Allowing connections from 0.0.0.0/0 to the engineering VM"
         },
         {
           "label": "D",
@@ -2456,15 +2471,15 @@
         "B"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การกำหนดสิทธิ์ควรยึด least privilege ให้สิทธิ์เท่าที่จำเป็นต่อบทบาทหรือ service เท่านั้น",
-        "B": "ถูก เพราะ การกำหนดสิทธิ์ควรยึด least privilege ให้สิทธิ์เท่าที่จำเป็นต่อบทบาทหรือ service เท่านั้น",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การกำหนดสิทธิ์ควรยึด least privilege ให้สิทธิ์เท่าที่จำเป็นต่อบทบาทหรือ service เท่านั้น",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การกำหนดสิทธิ์ควรยึด least privilege ให้สิทธิ์เท่าที่จำเป็นต่อบทบาทหรือ service เท่านั้น"
+        "A": "Not the source PDF answer. The source answer is: Reviewing the administrator's permissions to access the engineering VM",
+        "B": "Correct according to the source PDF answer strip: Reviewing the administrator's permissions to access the engineering VM",
+        "C": "Not the source PDF answer. The source answer is: Reviewing the administrator's permissions to access the engineering VM",
+        "D": "Not the source PDF answer. The source answer is: Reviewing the administrator's permissions to access the engineering VM"
       },
       "ocrText": "Select one: A. B. C. D. Rebooting the engineering VM Reviewing the administrators permissions to access the engineering VM Allowing connections from 0.0.0.070 to the engineering VM Performing a packet capture on the engineering VM",
       "answerOcrText": "The correct answer is: Reviewing the administrator's permissions to access the engineering VM",
       "media": [],
-      "explanation": "เฉลยคือ Reviewing the administrator's permissions to access the engineering VM เพราะ การกำหนดสิทธิ์ควรยึด least privilege ให้สิทธิ์เท่าที่จำเป็นต่อบทบาทหรือ service เท่านั้น"
+      "explanation": "The source PDF answer strip lists: Reviewing the administrator's permissions to access the engineering VM."
     },
     {
       "id": "cloud_quiz02_q015",
@@ -2521,7 +2536,11 @@
       "choices": [
         {
           "label": "A",
-          "text": "Warm Hot"
+          "text": "Warm"
+        },
+        {
+          "label": "B",
+          "text": "Hot"
         },
         {
           "label": "C",
@@ -2540,14 +2559,15 @@
         "C"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด แต่โจทย์ต้องการ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย",
-        "C": "ถูก เพราะ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ cold site/storage มี resource น้อยหรือไม่มีล่วงหน้า ต้นทุนต่ำแต่ใช้เวลาฟื้นตัวนานกว่า แต่โจทย์ต้องการ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย"
+        "A": "Not the source PDF answer. The source answer is: Archive",
+        "B": "Not the source PDF answer. The source answer is: Archive",
+        "C": "Correct according to the source PDF answer strip: Archive",
+        "D": "Not the source PDF answer. The source answer is: Archive"
       },
       "ocrText": "An organization needs to retain its data for compliance reasons but only when required. Which of the following would be the most cost- effective type Of tiered storage? Select one: A C. D. Warm Hot Archive Cold",
       "answerOcrText": "The correct answer is: Archive",
       "media": [],
-      "explanation": "เฉลยคือ Archive เพราะ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย"
+      "explanation": "The source PDF answer strip lists: Archive."
     },
     {
       "id": "cloud_quiz02_q017",
@@ -2568,7 +2588,11 @@
         },
         {
           "label": "C",
-          "text": "FaaS PaaS"
+          "text": "FaaS"
+        },
+        {
+          "label": "D",
+          "text": "PaaS"
         }
       ],
       "correctAnswerText": "IaaS",
@@ -2579,14 +2603,15 @@
         "B"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ SaaS คือแอปพลิเคชันสำเร็จรูปที่ผู้ให้บริการดูแลแพลตฟอร์มและแอปให้ ผู้ใช้เพียงเข้าใช้งานผ่านเครือข่าย แต่โจทย์ต้องการ การแก้ไขช่องโหว่หลังพบความเสี่ยง เช่น ปิดการเชื่อมต่อที่เป็นอันตราย อัปเดตระบบ หรือปรับคอนฟิกเพื่อลดผลกระทบ",
-        "B": "ถูก เพราะ การแก้ไขช่องโหว่หลังพบความเสี่ยง เช่น ปิดการเชื่อมต่อที่เป็นอันตราย อัปเดตระบบ หรือปรับคอนฟิกเพื่อลดผลกระทบ",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ PaaS ให้แพลตฟอร์มสำหรับรันและ deploy โค้ด โดยผู้ใช้ไม่ต้องดูแลระบบปฏิบัติการ เซิร์ฟเวอร์ และ runtime พื้นฐานเอง แต่โจทย์ต้องการ การแก้ไขช่องโหว่หลังพบความเสี่ยง เช่น ปิดการเชื่อมต่อที่เป็นอันตราย อัปเดตระบบ หรือปรับคอนฟิกเพื่อลดผลกระทบ"
+        "A": "Not the source PDF answer. The source answer is: IaaS",
+        "B": "Correct according to the source PDF answer strip: IaaS",
+        "C": "Not the source PDF answer. The source answer is: IaaS",
+        "D": "Not the source PDF answer. The source answer is: IaaS"
       },
       "ocrText": "A company wants to build its new platform using a public cloud. The workload requirements include the following: • Implementation of custom CIS compliance • Patch for vulnerabilities within 24 hours • Warrant at least 1 ,800 IOPS per volume Which of the following meets the requirements? Select one: A. B. c. SaaS IaaS FaaS PaaS",
       "answerOcrText": "The correct answer is: IaaS",
       "media": [],
-      "explanation": "เฉลยคือ IaaS เพราะ การแก้ไขช่องโหว่หลังพบความเสี่ยง เช่น ปิดการเชื่อมต่อที่เป็นอันตราย อัปเดตระบบ หรือปรับคอนฟิกเพื่อลดผลกระทบ"
+      "explanation": "The source PDF answer strip lists: IaaS."
     },
     {
       "id": "cloud_quiz02_q018",
@@ -2783,7 +2808,11 @@
         },
         {
           "label": "C",
-          "text": "Remote desktops Bare-metal servers"
+          "text": "Remote desktops"
+        },
+        {
+          "label": "D",
+          "text": "Bare-metal servers"
         }
       ],
       "correctAnswerText": "Containers",
@@ -2794,14 +2823,15 @@
         "B"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ container แพ็กแอปพร้อม dependency ให้รันได้สม่ำเสมอบน environment ต่าง ๆ โดยใช้ kernel ร่วมกับ host",
-        "B": "ถูก เพราะ container แพ็กแอปพร้อม dependency ให้รันได้สม่ำเสมอบน environment ต่าง ๆ โดยใช้ kernel ร่วมกับ host",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ container แพ็กแอปพร้อม dependency ให้รันได้สม่ำเสมอบน environment ต่าง ๆ โดยใช้ kernel ร่วมกับ host"
+        "A": "Not the source PDF answer. The source answer is: Containers",
+        "B": "Correct according to the source PDF answer strip: Containers",
+        "C": "Not the source PDF answer. The source answer is: Containers",
+        "D": "Not the source PDF answer. The source answer is: Containers"
       },
       "ocrText": "A company wants to optimize cloud resources and lower the overhead caused by managing multiple operating systems. Which of the following compute resources would be best to help to achieve this goal? Select one: A. B. C. VM Containers Remote desktops Bare-metal servers",
       "answerOcrText": "The correct answer is: Containers",
       "media": [],
-      "explanation": "เฉลยคือ Containers เพราะ container แพ็กแอปพร้อม dependency ให้รันได้สม่ำเสมอบน environment ต่าง ๆ โดยใช้ kernel ร่วมกับ host"
+      "explanation": "The source PDF answer strip lists: Containers."
     },
     {
       "id": "cloud_quiz02_q023",
@@ -2958,33 +2988,38 @@
         },
         {
           "label": "D",
-          "text": "Maintaining one branch for all features Committing code often"
+          "text": "Maintaining one branch for all features"
+        },
+        {
+          "label": "E",
+          "text": "Committing code often"
         },
         {
           "label": "F",
           "text": "Initiating a pull request"
         }
       ],
-      "correctAnswerText": "Merging code Often, Committing code Often",
+      "correctAnswerText": "Merging code often, Committing code often",
       "correctAnswers": [
-        "Merging code Often",
-        "Committing code Often"
+        "Merging code often",
+        "Committing code often"
       ],
       "correctLabels": [
         "A",
-        "D"
+        "E"
       ],
       "choiceExplanations": {
-        "A": "ถูก เพราะ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ git push ส่ง commit จากเครื่อง local ไปยัง remote repository แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "D": "ถูก เพราะ branch แยกเส้นทางพัฒนาโค้ดเพื่อให้เปลี่ยนแปลงได้โดยไม่กระทบสายหลัก",
-        "F": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ pull request เป็นขั้นตอนเสนอและตรวจทานการเปลี่ยนแปลงก่อน merge เข้าสาขาหลัก ช่วยควบคุมคุณภาพโค้ด แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ"
+        "A": "Correct according to the source PDF answer strip: Merging code often, Committing code often",
+        "B": "Not the source PDF answer. The source answer is: Merging code often, Committing code often",
+        "C": "Not the source PDF answer. The source answer is: Merging code often, Committing code often",
+        "D": "Not the source PDF answer. The source answer is: Merging code often, Committing code often",
+        "E": "Correct according to the source PDF answer strip: Merging code often, Committing code often",
+        "F": "Not the source PDF answer. The source answer is: Merging code often, Committing code often"
       },
       "ocrText": "Which of the following are best practices when working with a source control system? (Select TWO). Select one or more: A B. C. D. F. Merging code often Pushing code directly to production Performing code deployment Maintaining one branch for all features Committing code often Initiating a pull request",
       "answerOcrText": "The correct answers are: Merging code Often, Committing code Often",
       "media": [],
-      "explanation": "เฉลยคือ Merging code Often, Committing code Often เพราะตัวเลือกเหล่านี้ทำงานร่วมกันตรงกับเงื่อนไขของโจทย์: ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ"
+      "explanation": "The source PDF answer strip lists: Merging code often, Committing code often."
     },
     {
       "id": "cloud_quiz02_q027",
@@ -3237,7 +3272,11 @@
         },
         {
           "label": "C",
-          "text": "Encryption Integrity"
+          "text": "Encryption"
+        },
+        {
+          "label": "D",
+          "text": "Integrity"
         }
       ],
       "correctAnswerText": "Retention",
@@ -3248,14 +3287,15 @@
         "B"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย",
-        "B": "ถูก เพราะ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest แต่โจทย์ต้องการ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย"
+        "A": "Not the source PDF answer. The source answer is: Retention",
+        "B": "Correct according to the source PDF answer strip: Retention",
+        "C": "Not the source PDF answer. The source answer is: Retention",
+        "D": "Not the source PDF answer. The source answer is: Retention"
       },
       "ocrText": "Following a ransomware attack, the legal department at a company instructs the IT administrator to store the data from the affected virtual machines for a minimum Of one year. Which Of the following is this an example Of? Select one: A B. C. Recoverability Retention Encryption Integrity",
       "answerOcrText": "The correct answer is: Retention",
       "media": [],
-      "explanation": "เฉลยคือ Retention เพราะ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย"
+      "explanation": "The source PDF answer strip lists: Retention."
     },
     {
       "id": "cloud_quiz02_q033",
@@ -3500,7 +3540,11 @@
         },
         {
           "label": "D",
-          "text": "Log rotation Hashing"
+          "text": "Log rotation"
+        },
+        {
+          "label": "E",
+          "text": "Hashing"
         },
         {
           "label": "F",
@@ -3517,16 +3561,17 @@
         "C"
       ],
       "choiceExplanations": {
-        "A": "ถูก เพราะ public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ distributed tracing ใช้ติดตาม request ข้าม service เพื่อหาคอขวดหรือจุดผิดพลาดในระบบกระจาย แต่โจทย์ต้องการ public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ",
-        "C": "ถูก เพราะ public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ",
-        "F": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest แต่โจทย์ต้องการ public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ"
+        "A": "Correct according to the source PDF answer strip: Log retention, Log aggregation",
+        "B": "Not the source PDF answer. The source answer is: Log retention, Log aggregation",
+        "C": "Correct according to the source PDF answer strip: Log retention, Log aggregation",
+        "D": "Not the source PDF answer. The source answer is: Log retention, Log aggregation",
+        "E": "Not the source PDF answer. The source answer is: Log retention, Log aggregation",
+        "F": "Not the source PDF answer. The source answer is: Log retention, Log aggregation"
       },
       "ocrText": "A company recently migrated to a public cloud provider. The company's computer incident response team needs to configure native cloud services tor detailed logging. Which of the following should the team implement on each cloud service to support root cause analysis of past events? {Select TWO). Select one or more: A. B. C. D F. Log retention Tracing Log aggregation Log rotation Hashing Encryption",
       "answerOcrText": "The correct answers are: Log retention, Log aggregation",
       "media": [],
-      "explanation": "เฉลยคือ Log retention, Log aggregation เพราะตัวเลือกเหล่านี้ทำงานร่วมกันตรงกับเงื่อนไขของโจทย์: public cloud เป็น resource ของผู้ให้บริการที่แบ่งใช้กับหลายองค์กรและเข้าถึงผ่านเครือข่ายสาธารณะ"
+      "explanation": "The source PDF answer strip lists: Log retention, Log aggregation."
     },
     {
       "id": "cloud_quiz02_q039",
@@ -3987,6 +4032,10 @@
           "text": "Archive"
         },
         {
+          "label": "B",
+          "text": "Hot"
+        },
+        {
           "label": "C",
           "text": "Cold"
         },
@@ -4003,14 +4052,15 @@
         "A"
       ],
       "choiceExplanations": {
-        "A": "ถูก เพราะ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ cold site/storage มี resource น้อยหรือไม่มีล่วงหน้า ต้นทุนต่ำแต่ใช้เวลาฟื้นตัวนานกว่า แต่โจทย์ต้องการ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ warm site/storage เตรียมบางส่วนไว้แล้ว กู้คืนได้เร็วปานกลางและต้นทุนต่ำกว่า hot แต่โจทย์ต้องการ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย"
+        "A": "Correct according to the source PDF answer strip: Archive",
+        "B": "Not the source PDF answer. The source answer is: Archive",
+        "C": "Not the source PDF answer. The source answer is: Archive",
+        "D": "Not the source PDF answer. The source answer is: Archive"
       },
       "ocrText": "For compliance purposes, a cloud developer at an insurance company needs to save all customer policies for more than ten years. Which of the following options is the most costefficient tier to save the data in the cloud? Select one: A. C. D Archive Cold Warm",
       "answerOcrText": "The correct answer is: Archive",
       "media": [],
-      "explanation": "เฉลยคือ Archive เพราะ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย"
+      "explanation": "The source PDF answer strip lists: Archive."
     },
     {
       "id": "cloud_quiz03_q010",
@@ -4682,6 +4732,10 @@
       "mode": "single",
       "choices": [
         {
+          "label": "A",
+          "text": "VPN"
+        },
+        {
           "label": "B",
           "text": "VPC peering"
         },
@@ -4702,14 +4756,15 @@
         "B"
       ],
       "choiceExplanations": {
-        "B": "ถูก เพราะ VPC peering เชื่อม virtual network เข้าหากันแบบ private เพื่อให้ resource สื่อสารกันได้",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ BGP ใช้แลกเปลี่ยน route ระหว่างเครือข่าย เหมาะกับการเชื่อมต่อหลายเครือข่ายหรือ hybrid connectivity แต่โจทย์ต้องการ VPC peering เชื่อม virtual network เข้าหากันแบบ private เพื่อให้ resource สื่อสารกันได้",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวกลางที่เชื่อมเครือข่ายหรือโปรโตคอลเข้าด้วยกัน ไม่ใช่อุปกรณ์ตรวจวัดหลัก แต่โจทย์ต้องการ VPC peering เชื่อม virtual network เข้าหากันแบบ private เพื่อให้ resource สื่อสารกันได้"
+        "A": "Not the source PDF answer. The source answer is: VPC peering",
+        "B": "Correct according to the source PDF answer strip: VPC peering",
+        "C": "Not the source PDF answer. The source answer is: VPC peering",
+        "D": "Not the source PDF answer. The source answer is: VPC peering"
       },
       "ocrText": "Which of the following provides secure, private communication between cloud environments without provisioning additional hardware or appliances? Select one: B. c. D. VPN VPC peering BGP Transit gateway",
       "answerOcrText": "The correct answer is: VPC peering",
       "media": [],
-      "explanation": "เฉลยคือ VPC peering เพราะ VPC peering เชื่อม virtual network เข้าหากันแบบ private เพื่อให้ resource สื่อสารกันได้"
+      "explanation": "The source PDF answer strip lists: VPC peering."
     },
     {
       "id": "cloud_quiz03_q026",
@@ -4866,7 +4921,11 @@
         },
         {
           "label": "D",
-          "text": "Cluster configuration Row-level encryption"
+          "text": "Cluster configuration"
+        },
+        {
+          "label": "E",
+          "text": "Row-level encryption"
         },
         {
           "label": "F",
@@ -4880,19 +4939,20 @@
       ],
       "correctLabels": [
         "B",
-        "D"
+        "E"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ การแก้ไขช่องโหว่หลังพบความเสี่ยง เช่น ปิดการเชื่อมต่อที่เป็นอันตราย อัปเดตระบบ หรือปรับคอนฟิกเพื่อลดผลกระทบ แต่โจทย์ต้องการ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest",
-        "B": "ถูก เพราะ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest",
-        "D": "ถูก เพราะ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest",
-        "F": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ high availability ออกแบบให้ระบบยังให้บริการได้เมื่อ component บางส่วนล้มเหลว โดยใช้ redundancy และ health checks แต่โจทย์ต้องการ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest"
+        "A": "Not the source PDF answer. The source answer is: Table-level permissions, Row-level encryption",
+        "B": "Correct according to the source PDF answer strip: Table-level permissions, Row-level encryption",
+        "C": "Not the source PDF answer. The source answer is: Table-level permissions, Row-level encryption",
+        "D": "Not the source PDF answer. The source answer is: Table-level permissions, Row-level encryption",
+        "E": "Correct according to the source PDF answer strip: Table-level permissions, Row-level encryption",
+        "F": "Not the source PDF answer. The source answer is: Table-level permissions, Row-level encryption"
       },
       "ocrText": "Which of the following is a customer be responsible for in a provider-managed database service? (Select TWO) Select one or more: A. B. C. D. F. Operating system patches Table-level permissions Minor database engine updates Cluster configuration Row-level encryption Availability of hardware for scaling",
       "answerOcrText": "The correct answers are: Table-level permissions, Row-level encryption",
       "media": [],
-      "explanation": "เฉลยคือ Table-level permissions, Row-level encryption เพราะตัวเลือกเหล่านี้ทำงานร่วมกันตรงกับเงื่อนไขของโจทย์: การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest"
+      "explanation": "The source PDF answer strip lists: Table-level permissions, Row-level encryption."
     },
     {
       "id": "cloud_quiz03_q030",
@@ -4905,7 +4965,11 @@
       "choices": [
         {
           "label": "A",
-          "text": "Cryptojacking Human error"
+          "text": "Cryptojacking"
+        },
+        {
+          "label": "B",
+          "text": "Human error"
         },
         {
           "label": "C",
@@ -4924,14 +4988,15 @@
         "C"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ cryptojacking คือการใช้ resource ของระบบไปขุด cryptocurrency โดยไม่ได้รับอนุญาต แต่โจทย์ต้องการ DDoS ทำให้บริการล่มหรือช้าด้วยทราฟฟิกจำนวนมากจากหลายแหล่ง",
-        "C": "ถูก เพราะ DDoS ทำให้บริการล่มหรือช้าด้วยทราฟฟิกจำนวนมากจากหลายแหล่ง",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ DDoS ทำให้บริการล่มหรือช้าด้วยทราฟฟิกจำนวนมากจากหลายแหล่ง"
+        "A": "Not the source PDF answer. The source answer is: DDoS",
+        "B": "Not the source PDF answer. The source answer is: DDoS",
+        "C": "Correct according to the source PDF answer strip: DDoS",
+        "D": "Not the source PDF answer. The source answer is: DDoS"
       },
       "ocrText": "A company runs a discussion forum that caters to global users. The company's monitoring system reports that the home page suddenly is seeing elevated response times, even though internal monitoring has reported no issues or changes. Which of the following is the most likely cause Of this issue? Select one: A. c. D. Cryptojacking Human error DDoS Phishing",
       "answerOcrText": "The correct answer is: DDoS",
       "media": [],
-      "explanation": "เฉลยคือ DDoS เพราะ DDoS ทำให้บริการล่มหรือช้าด้วยทราฟฟิกจำนวนมากจากหลายแหล่ง"
+      "explanation": "The source PDF answer strip lists: DDoS."
     },
     {
       "id": "cloud_quiz03_q031",
@@ -5643,7 +5708,7 @@
       "quiz": "Quiz 04",
       "number": 7,
       "sourcePdf": "cloud_quiz04.pdf",
-      "prompt": "[Prompt missing from OCR. Review cloud_quiz04.pdf question 7.]",
+      "prompt": "An on-premises data center is located in an earthquake-prone location. The workload consists of real-time, online transaction processing. Which of the following data protection strategies should be used to back up on-premises data to the cloud while also being cost effective?",
       "mode": "single",
       "choices": [
         {
@@ -5671,15 +5736,15 @@
         "A"
       ],
       "choiceExplanations": {
-        "A": "ถูก เพราะ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ private cloud ใช้ resource เฉพาะองค์กรเดียว เหมาะกับข้อกำหนดควบคุมหรือ compliance สูง แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ private cloud ใช้ resource เฉพาะองค์กรเดียว เหมาะกับข้อกำหนดควบคุมหรือ compliance สูง แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ"
+        "A": "Correct according to the source PDF answer strip: Remote replication for failover",
+        "B": "Not the source PDF answer. The source answer is: Remote replication for failover",
+        "C": "Not the source PDF answer. The source answer is: Remote replication for failover",
+        "D": "Not the source PDF answer. The source answer is: Remote replication for failover"
       },
       "ocrText": "Select one: A. B. C. D. Remote replication for failover A copy that is RAID 1 protected on spinning drives in an on-premises private cloud A full backup to on-site tape libraries in a private cloud Air-gapped protection to provide cyber resiliency",
       "answerOcrText": "The correct answer is: Remote replication for failover",
       "media": [],
-      "explanation": "เฉลยคือ Remote replication for failover เพราะ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ"
+      "explanation": "The source PDF answer strip lists: Remote replication for failover."
     },
     {
       "id": "cloud_quiz04_q008",
@@ -6087,6 +6152,10 @@
       "mode": "single",
       "choices": [
         {
+          "label": "A",
+          "text": "VPC"
+        },
+        {
           "label": "B",
           "text": "Application load balancer"
         },
@@ -6107,14 +6176,15 @@
         "C"
       ],
       "choiceExplanations": {
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ load balancer กระจาย request ไปหลาย instance เพิ่ม availability และรองรับโหลดได้ดีกว่าเครื่องเดียว แต่โจทย์ต้องการ CDN กระจาย static content ไปใกล้ผู้ใช้เพื่อลด latency และลดโหลดที่ origin",
-        "C": "ถูก เพราะ CDN กระจาย static content ไปใกล้ผู้ใช้เพื่อลด latency และลดโหลดที่ origin",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวกลางที่เชื่อมเครือข่ายหรือโปรโตคอลเข้าด้วยกัน ไม่ใช่อุปกรณ์ตรวจวัดหลัก แต่โจทย์ต้องการ CDN กระจาย static content ไปใกล้ผู้ใช้เพื่อลด latency และลดโหลดที่ origin"
+        "A": "Not the source PDF answer. The source answer is: CDN",
+        "B": "Not the source PDF answer. The source answer is: CDN",
+        "C": "Correct according to the source PDF answer strip: CDN",
+        "D": "Not the source PDF answer. The source answer is: CDN"
       },
       "ocrText": "A cloud developer is creating a static website that customers will be accessing globally. Which of the following services will help reduce latency? Select one: B. c. D. VPC Application load balancer CDN API gateway",
       "answerOcrText": "The correct answer is: CDN",
       "media": [],
-      "explanation": "เฉลยคือ CDN เพราะ CDN กระจาย static content ไปใกล้ผู้ใช้เพื่อลด latency และลดโหลดที่ origin"
+      "explanation": "The source PDF answer strip lists: CDN."
     },
     {
       "id": "cloud_quiz04_q018",
@@ -6585,7 +6655,11 @@
       "choices": [
         {
           "label": "A",
-          "text": "Snapshot Full"
+          "text": "Snapshot"
+        },
+        {
+          "label": "B",
+          "text": "Full"
         },
         {
           "label": "C",
@@ -6604,14 +6678,15 @@
         "D"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ snapshot บันทึกสถานะ point-in-time ของ volume หรือ VM เพื่อกู้คืนหรือ clone ได้รวดเร็ว แต่โจทย์ต้องการ backup/restore ใช้สำรองข้อมูลและกู้คืนเมื่อข้อมูลเสียหายหรือระบบล่ม",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ backup/restore ใช้สำรองข้อมูลและกู้คืนเมื่อข้อมูลเสียหายหรือระบบล่ม",
-        "D": "ถูก เพราะ backup/restore ใช้สำรองข้อมูลและกู้คืนเมื่อข้อมูลเสียหายหรือระบบล่ม"
+        "A": "Not the source PDF answer. The source answer is: Incremental",
+        "B": "Not the source PDF answer. The source answer is: Incremental",
+        "C": "Not the source PDF answer. The source answer is: Incremental",
+        "D": "Correct according to the source PDF answer strip: Incremental"
       },
       "ocrText": "A systems administrator needs to configure backups for the company's on-premises VM cluster. The storage used for backups will be constrained on free space until the company can implement cloud backups. Which of the following backup types will save the most space, assuming the frequency of backups is kept the same? Select one: A. C. D Snapshot Full Differential Incremental",
       "answerOcrText": "The correct answer is: Incremental",
       "media": [],
-      "explanation": "เฉลยคือ Incremental เพราะ backup/restore ใช้สำรองข้อมูลและกู้คืนเมื่อข้อมูลเสียหายหรือระบบล่ม"
+      "explanation": "The source PDF answer strip lists: Incremental."
     },
     {
       "id": "cloud_quiz04_q029",
@@ -6839,7 +6914,7 @@
       "quiz": "Quiz 04",
       "number": 34,
       "sourcePdf": "cloud_quiz04.pdf",
-      "prompt": "[Prompt missing from OCR. Review cloud_quiz04.pdf question 34.]",
+      "prompt": "An administrator needs to provide a backup solution for a cloud infrastructure that enables the resources to run from another data center in case of an outage. Connectivity to the backup data center is via a third-party, untrusted network. Which of the following is the most important feature required for this solution?",
       "mode": "single",
       "choices": [
         {
@@ -6871,16 +6946,16 @@
         "D"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest",
-        "D": "ถูก เพราะ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest",
-        "E": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest"
+        "A": "Not the source PDF answer. The source answer is: Encryption",
+        "B": "Not the source PDF answer. The source answer is: Encryption",
+        "C": "Not the source PDF answer. The source answer is: Encryption",
+        "D": "Correct according to the source PDF answer strip: Encryption",
+        "E": "Not the source PDF answer. The source answer is: Encryption"
       },
       "ocrText": "Select one: A. B. C. D. E. Deduplication Replication Compression Encryption Labeling",
       "answerOcrText": "The correct answer is: Encryption",
       "media": [],
-      "explanation": "เฉลยคือ Encryption เพราะ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest"
+      "explanation": "The source PDF answer strip lists: Encryption."
     },
     {
       "id": "cloud_quiz04_q035",
@@ -7156,6 +7231,10 @@
       "mode": "single",
       "choices": [
         {
+          "label": "A",
+          "text": "File"
+        },
+        {
           "label": "B",
           "text": "Object"
         },
@@ -7176,14 +7255,15 @@
         "C"
       ],
       "choiceExplanations": {
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "C": "ถูก เพราะ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ"
+        "A": "Not the source PDF answer. The source answer is: Block",
+        "B": "Not the source PDF answer. The source answer is: Block",
+        "C": "Correct according to the source PDF answer strip: Block",
+        "D": "Not the source PDF answer. The source answer is: Block"
       },
       "ocrText": "Which of the following types of storage provides the greatest performance advantage for a traditional relational database? Select one: B. C. D File Object Block Ephemeral",
       "answerOcrText": "The correct answer is: Block",
       "media": [],
-      "explanation": "เฉลยคือ Block เพราะ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ"
+      "explanation": "The source PDF answer strip lists: Block."
     },
     {
       "id": "cloud_quiz05_q002",
@@ -7327,6 +7407,10 @@
       "mode": "single",
       "choices": [
         {
+          "label": "A",
+          "text": "IPS"
+        },
+        {
           "label": "B",
           "text": "ACL"
         },
@@ -7347,14 +7431,15 @@
         "D"
       ],
       "choiceExplanations": {
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ACL เป็นรายการกฎอนุญาต/ปฏิเสธการเข้าถึง เหมาะกับการคุมทราฟฟิกหรือสิทธิ์แบบระบุรายการ แต่โจทย์ต้องการ IaaS ให้เครื่องเสมือน เครือข่าย และสตอเรจที่ผู้ใช้ควบคุมระบบปฏิบัติการและซอฟต์แวร์ได้มากกว่า PaaS/SaaS",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ IaaS ให้เครื่องเสมือน เครือข่าย และสตอเรจที่ผู้ใช้ควบคุมระบบปฏิบัติการและซอฟต์แวร์ได้มากกว่า PaaS/SaaS",
-        "D": "ถูก เพราะ IaaS ให้เครื่องเสมือน เครือข่าย และสตอเรจที่ผู้ใช้ควบคุมระบบปฏิบัติการและซอฟต์แวร์ได้มากกว่า PaaS/SaaS"
+        "A": "Not the source PDF answer. The source answer is: WAF",
+        "B": "Not the source PDF answer. The source answer is: WAF",
+        "C": "Not the source PDF answer. The source answer is: WAF",
+        "D": "Correct according to the source PDF answer strip: WAF"
       },
       "ocrText": "A customer relationship management application, which is hosted in a public cloud IaaS network, is vulnerable to a remote command execution vulnerability. Which of the following is the best solution for the security engineer to implement to prevent the application from being exploited by basic attacks? Select one: B. c. D ACL DLP WAF",
       "answerOcrText": "The correct answer is: WAF",
       "media": [],
-      "explanation": "เฉลยคือ WAF เพราะ IaaS ให้เครื่องเสมือน เครือข่าย และสตอเรจที่ผู้ใช้ควบคุมระบบปฏิบัติการและซอฟต์แวร์ได้มากกว่า PaaS/SaaS"
+      "explanation": "The source PDF answer strip lists: WAF."
     },
     {
       "id": "cloud_quiz05_q006",
@@ -8117,7 +8202,7 @@
       "quiz": "Quiz 05",
       "number": 23,
       "sourcePdf": "cloud_quiz05.pdf",
-      "prompt": "[Prompt missing from OCR. Review cloud_quiz05.pdf question 23.]",
+      "prompt": "A newly configured VM fails to run application updates despite having internet access. The updates download automatically from a third-party network. Given the following output: dig +short apac.updateserver.net returns 38.102.218.7; dig +short na.updateserver.net returns request timeout. Which of the following troubleshooting steps would be best to take?",
       "mode": "single",
       "choices": [
         {
@@ -8145,15 +8230,15 @@
         "A"
       ],
       "choiceExplanations": {
-        "A": "ถูก เพราะ DNS แปลงชื่อโดเมนเป็น IP และช่วยกำหนดเส้นทางการเข้าถึงบริการด้วย record ต่าง ๆ",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ route table กำหนดเส้นทางว่า packet จะออกไปทาง gateway, peering หรือ next hop ใด แต่โจทย์ต้องการ DNS แปลงชื่อโดเมนเป็น IP และช่วยกำหนดเส้นทางการเข้าถึงบริการด้วย record ต่าง ๆ",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ DNS แปลงชื่อโดเมนเป็น IP และช่วยกำหนดเส้นทางการเข้าถึงบริการด้วย record ต่าง ๆ",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ DNS แปลงชื่อโดเมนเป็น IP และช่วยกำหนดเส้นทางการเข้าถึงบริการด้วย record ต่าง ๆ"
+        "A": "Correct according to the source PDF answer strip: Checking DNS configurations",
+        "B": "Not the source PDF answer. The source answer is: Checking DNS configurations",
+        "C": "Not the source PDF answer. The source answer is: Checking DNS configurations",
+        "D": "Not the source PDF answer. The source answer is: Checking DNS configurations"
       },
       "ocrText": "Select one: A. B. C. D. Checking DNS configurations Reconfiguring routing protocols Testing the IP address configuration Running a trace to the router",
       "answerOcrText": "The correct answer is: Checking DNS configurations",
       "media": [],
-      "explanation": "เฉลยคือ Checking DNS configurations เพราะ DNS แปลงชื่อโดเมนเป็น IP และช่วยกำหนดเส้นทางการเข้าถึงบริการด้วย record ต่าง ๆ"
+      "explanation": "The source PDF answer strip lists: Checking DNS configurations."
     },
     {
       "id": "cloud_quiz05_q024",
@@ -8475,7 +8560,11 @@
       "choices": [
         {
           "label": "A",
-          "text": "Resource tagging Discretionary access control"
+          "text": "Resource tagging"
+        },
+        {
+          "label": "B",
+          "text": "Discretionary access control"
         },
         {
           "label": "C",
@@ -8500,20 +8589,21 @@
         "Role-based access control"
       ],
       "correctLabels": [
-        "A",
+        "B",
         "D"
       ],
       "choiceExplanations": {
-        "A": "ถูก เพราะ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "D": "ถูก เพราะ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "E": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ",
-        "F": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ"
+        "A": "Not the source PDF answer. The source answer is: Discretionary access control, Role-based access control",
+        "B": "Correct according to the source PDF answer strip: Discretionary access control, Role-based access control",
+        "C": "Not the source PDF answer. The source answer is: Discretionary access control, Role-based access control",
+        "D": "Correct according to the source PDF answer strip: Discretionary access control, Role-based access control",
+        "E": "Not the source PDF answer. The source answer is: Discretionary access control, Role-based access control",
+        "F": "Not the source PDF answer. The source answer is: Discretionary access control, Role-based access control"
       },
       "ocrText": "A customer is migrating applications to the cloud and wants to grant authorization based on the classification levels of each system. Which Of the following should the customer implement to ensure authorisation to systems is granted when the user and system classification properties match? (Select TWO). Select one or more: A. C. D. E. F. Resource tagging Discretionary access control Multifactor authentication Role-based access control Token-based authentication Bastion host",
       "answerOcrText": "The correct answers are: Discretionary access control, Role-based access control",
       "media": [],
-      "explanation": "เฉลยคือ Discretionary access control, Role-based access control เพราะตัวเลือกเหล่านี้ทำงานร่วมกันตรงกับเงื่อนไขของโจทย์: ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ"
+      "explanation": "The source PDF answer strip lists: Discretionary access control, Role-based access control."
     },
     {
       "id": "cloud_quiz05_q032",
@@ -9680,7 +9770,11 @@
         },
         {
           "label": "C",
-          "text": "SAML AES"
+          "text": "SAML"
+        },
+        {
+          "label": "D",
+          "text": "AES"
         },
         {
           "label": "E",
@@ -9697,20 +9791,21 @@
         "TLS"
       ],
       "correctLabels": [
-        "C",
+        "D",
         "E"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest",
-        "C": "ถูก เพราะ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest",
-        "E": "ถูก เพราะ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest",
-        "F": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest"
+        "A": "Not the source PDF answer. The source answer is: AES, TLS",
+        "B": "Not the source PDF answer. The source answer is: AES, TLS",
+        "C": "Not the source PDF answer. The source answer is: AES, TLS",
+        "D": "Correct according to the source PDF answer strip: AES, TLS",
+        "E": "Correct according to the source PDF answer strip: AES, TLS",
+        "F": "Not the source PDF answer. The source answer is: AES, TLS"
       },
       "ocrText": "A cloud engineer is migrating a company-hosted application to a cloud provider. The data needs to be secure while stored on the third-party system. Which of the following would best ensure that the data is secure? (Select two). Select one or more: A. B. c. E. F. Hashing Encoding SAML AES TLS SSL",
       "answerOcrText": "The correct answers are: AES, TLS",
       "media": [],
-      "explanation": "เฉลยคือ AES, TLS เพราะตัวเลือกเหล่านี้ทำงานร่วมกันตรงกับเงื่อนไขของโจทย์: การเข้ารหัสปกป้องข้อมูลด้วย key โดย AES เป็นอัลกอริทึม symmetric ที่ใช้แพร่หลายสำหรับข้อมูล at rest"
+      "explanation": "The source PDF answer strip lists: AES, TLS."
     },
     {
       "id": "cloud_quiz08_q007",
@@ -9987,28 +10082,38 @@
       "choices": [
         {
           "label": "A",
-          "text": "Mount the volume in Docker using —user=myapp."
+          "text": "Mount the volume in Docker using --user=myapp."
         },
         {
           "label": "B",
-          "text": "Add USER myapp to the Dockerfile and rebuild the container. QI In with"
+          "text": "Add USER myapp to the Dockerfile and rebuild the container."
+        },
+        {
+          "label": "C",
+          "text": "Run chown myapp:myapp /project-files with cron every minute."
+        },
+        {
+          "label": "D",
+          "text": "Modify the container application to execute sudo -u myapp myapp."
         }
       ],
-      "correctAnswerText": "Add USER myapp to the Dockerfile and rebuild the container",
+      "correctAnswerText": "Add USER myapp to the Dockerfile and rebuild the container.",
       "correctAnswers": [
-        "Add USER myapp to the Dockerfile and rebuild the container"
+        "Add USER myapp to the Dockerfile and rebuild the container."
       ],
       "correctLabels": [
         "B"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ container แพ็กแอปพร้อม dependency ให้รันได้สม่ำเสมอบน environment ต่าง ๆ โดยใช้ kernel ร่วมกับ host",
-        "B": "ถูก เพราะ container แพ็กแอปพร้อม dependency ให้รันได้สม่ำเสมอบน environment ต่าง ๆ โดยใช้ kernel ร่วมกับ host"
+        "A": "Not the source PDF answer. The source answer is: Add USER myapp to the Dockerfile and rebuild the container.",
+        "B": "Correct according to the source PDF answer strip: Add USER myapp to the Dockerfile and rebuild the container.",
+        "C": "Not the source PDF answer. The source answer is: Add USER myapp to the Dockerfile and rebuild the container.",
+        "D": "Not the source PDF answer. The source answer is: Add USER myapp to the Dockerfile and rebuild the container."
       },
       "ocrText": "An application that is running on containers writes files to the operating system after processing data. The produced output files are stored under /project-files owned by root. A cloud engineer needs to make sure no output files are owned by root. Which of the following actions should the engineer take to best achieve this objective? Select one: A. B. Mount the volume in Docker using —user=myapp. Add USER myapp to the Dockerfile and rebuild the container. QI In with",
       "answerOcrText": "The correct answer is: Add USER myapp to the Dockerfile and rebuild the container.",
       "media": [],
-      "explanation": "เฉลยคือ Add USER myapp to the Dockerfile and rebuild the container เพราะ container แพ็กแอปพร้อม dependency ให้รันได้สม่ำเสมอบน environment ต่าง ๆ โดยใช้ kernel ร่วมกับ host"
+      "explanation": "The source PDF answer strip lists: Add USER myapp to the Dockerfile and rebuild the container.."
     },
     {
       "id": "cloud_quiz08_q015",
@@ -10680,6 +10785,10 @@
       "mode": "single",
       "choices": [
         {
+          "label": "A",
+          "text": "Private"
+        },
+        {
           "label": "B",
           "text": "Community"
         },
@@ -10700,14 +10809,15 @@
         "B"
       ],
       "choiceExplanations": {
-        "B": "ถูก เพราะ community cloud ใช้ร่วมกันระหว่างองค์กรที่มีข้อกำหนดร่วม เช่น ภาคอุตสาหกรรมหรือหน่วยงานที่อยู่ภายใต้กฎเดียวกัน",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ community cloud ใช้ร่วมกันระหว่างองค์กรที่มีข้อกำหนดร่วม เช่น ภาคอุตสาหกรรมหรือหน่วยงานที่อยู่ภายใต้กฎเดียวกัน",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ hybrid cloud ผสาน on-premises/private cloud กับ public cloud เพื่อย้ายหรือกระจาย workload ได้ แต่โจทย์ต้องการ community cloud ใช้ร่วมกันระหว่างองค์กรที่มีข้อกำหนดร่วม เช่น ภาคอุตสาหกรรมหรือหน่วยงานที่อยู่ภายใต้กฎเดียวกัน"
+        "A": "Not the source PDF answer. The source answer is: Community",
+        "B": "Correct according to the source PDF answer strip: Community",
+        "C": "Not the source PDF answer. The source answer is: Community",
+        "D": "Not the source PDF answer. The source answer is: Community"
       },
       "ocrText": "A cloud engineer proposes a solution to migrate a finance application to the cloud. The environment can be shared to reduce costs. Which of the following models would best meet this requirement? Select one: B. C. D. private Community Public Hybrid",
       "answerOcrText": "The correct answer is: Community",
       "media": [],
-      "explanation": "เฉลยคือ Community เพราะ community cloud ใช้ร่วมกันระหว่างองค์กรที่มีข้อกำหนดร่วม เช่น ภาคอุตสาหกรรมหรือหน่วยงานที่อยู่ภายใต้กฎเดียวกัน"
+      "explanation": "The source PDF answer strip lists: Community."
     },
     {
       "id": "cloud_quiz09_q011",
@@ -10988,24 +11098,34 @@
         },
         {
           "label": "B",
-          "text": "Changing the MTU on Gigabit Ethernet 110/2"
+          "text": "Changing the MTU on Gigabit Ethernet 1/0/2"
+        },
+        {
+          "label": "C",
+          "text": "Changing the access VLAN for Gigabit Ethernet 1/0/2 to 25"
+        },
+        {
+          "label": "D",
+          "text": "Enabling jumbo frames on Gigabit Ethernet 1/0/6 and Gigabit Ethernet 1/0/7"
         }
       ],
-      "correctAnswerText": "Changing the MTU on Gigabit Ethernet I /Of2",
+      "correctAnswerText": "Changing the MTU on Gigabit Ethernet 1/0/2",
       "correctAnswers": [
-        "Changing the MTU on Gigabit Ethernet I /Of2"
+        "Changing the MTU on Gigabit Ethernet 1/0/2"
       ],
       "correctLabels": [
         "B"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ SAN ให้ storage ระดับ block ผ่านเครือข่ายเฉพาะ มักใช้กับงานประสิทธิภาพสูง",
-        "B": "ถูก เพราะ SAN ให้ storage ระดับ block ผ่านเครือข่ายเฉพาะ มักใช้กับงานประสิทธิภาพสูง"
+        "A": "Not the source PDF answer. The source answer is: Changing the MTU on Gigabit Ethernet 1/0/2",
+        "B": "Correct according to the source PDF answer strip: Changing the MTU on Gigabit Ethernet 1/0/2",
+        "C": "Not the source PDF answer. The source answer is: Changing the MTU on Gigabit Ethernet 1/0/2",
+        "D": "Not the source PDF answer. The source answer is: Changing the MTU on Gigabit Ethernet 1/0/2"
       },
       "ocrText": "A systems engineer tries to mount an iSCSI LUN to a VM host in a data center, but the host does not discover any iSCSI targets. A sample of the switch configuration is shown in the following image: GigabitEthernet 1/0/1 description \"Development Network Uplink to Host A\" access vlan 24 GigabitEthernet 1/0/2 description \"Storage Network Uplink to W Host A\" access vian 24 spanning-tree portfast mtu 9216 GigabitEthernet 1/0/3 description \"Lights-Out Management W Host A\" access vlan 20 spanning-tree portfast GigabitEthernet 1/0/4 description \"SAN Management Controller A\" access vlan 20 GigabitEthernet 1/0/5 description \"SAN Management Controller B\" access vlan 20 spanning-tree portfast GigabitEthernet 1/0/6 description \"SAN iSCSI Controller A\" access \"Ian 25 spanning-tree portfast GigabitEthernet 1/0/7 description \"SAN iSCSI Controller B\" access vlan 25 spanning- tree portfast Which of the following configuration changes would most likely resolve the discovery issues? Select one: A. B. Disabling Gigabit Ethernet 1/0/7 Changing the MTU on Gigabit Ethernet 110/2",
       "answerOcrText": "The correct answer is: Changing the MTU on Gigabit Ethernet I /Of2",
       "media": [],
-      "explanation": "เฉลยคือ Changing the MTU on Gigabit Ethernet I /Of2 เพราะ SAN ให้ storage ระดับ block ผ่านเครือข่ายเฉพาะ มักใช้กับงานประสิทธิภาพสูง"
+      "explanation": "The source PDF answer strip lists: Changing the MTU on Gigabit Ethernet 1/0/2."
     },
     {
       "id": "cloud_quiz09_q018",
@@ -11194,7 +11314,11 @@
       "choices": [
         {
           "label": "A",
-          "text": "Cold Hot"
+          "text": "Cold"
+        },
+        {
+          "label": "B",
+          "text": "Hot"
         },
         {
           "label": "C",
@@ -11213,14 +11337,15 @@
         "D"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ hot site/storage พร้อมใช้งานเร็วที่สุด แต่มีต้นทุนสูงกว่าเพราะเตรียม resource ไว้ตลอด แต่โจทย์ต้องการ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย",
-        "C": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ warm site/storage เตรียมบางส่วนไว้แล้ว กู้คืนได้เร็วปานกลางและต้นทุนต่ำกว่า hot แต่โจทย์ต้องการ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย",
-        "D": "ถูก เพราะ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย"
+        "A": "Not the source PDF answer. The source answer is: Archive",
+        "B": "Not the source PDF answer. The source answer is: Archive",
+        "C": "Not the source PDF answer. The source answer is: Archive",
+        "D": "Correct according to the source PDF answer strip: Archive"
       },
       "ocrText": "Which of the following types of storage is read-only and is accessed only when needed? Select one: A. C. D. Cold Hot Warm Archive",
       "answerOcrText": "The correct answer is: Archive",
       "media": [],
-      "explanation": "เฉลยคือ Archive เพราะ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย"
+      "explanation": "The source PDF answer strip lists: Archive."
     },
     {
       "id": "cloud_quiz10_q003",
@@ -11372,6 +11497,10 @@
           "text": "Serial-attached SCSI"
         },
         {
+          "label": "C",
+          "text": "SATA"
+        },
+        {
           "label": "D",
           "text": "iSCSI"
         }
@@ -11384,14 +11513,15 @@
         "A"
       ],
       "choiceExplanations": {
-        "A": "ถูก เพราะ IOPS/SSD เกี่ยวกับประสิทธิภาพดิสก์ เหมาะเมื่อปัญหาอยู่ที่ throughput หรือ latency ของ storage",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ IOPS/SSD เกี่ยวกับประสิทธิภาพดิสก์ เหมาะเมื่อปัญหาอยู่ที่ throughput หรือ latency ของ storage",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ IOPS/SSD เกี่ยวกับประสิทธิภาพดิสก์ เหมาะเมื่อปัญหาอยู่ที่ throughput หรือ latency ของ storage"
+        "A": "Correct according to the source PDF answer strip: NVMe",
+        "B": "Not the source PDF answer. The source answer is: NVMe",
+        "C": "Not the source PDF answer. The source answer is: NVMe",
+        "D": "Not the source PDF answer. The source answer is: NVMe"
       },
       "ocrText": "Which of the following interfaces is most commonly used for SSDs but not for HDDs? Select one: A. B. D. NVMe Serial-attached SCSI iSCSI",
       "answerOcrText": "The correct answer is: NVMe",
       "media": [],
-      "explanation": "เฉลยคือ NVMe เพราะ IOPS/SSD เกี่ยวกับประสิทธิภาพดิสก์ เหมาะเมื่อปัญหาอยู่ที่ throughput หรือ latency ของ storage"
+      "explanation": "The source PDF answer strip lists: NVMe."
     },
     {
       "id": "cloud_quiz10_q007",
@@ -11766,6 +11896,10 @@
       "mode": "single",
       "choices": [
         {
+          "label": "A",
+          "text": "Hot"
+        },
+        {
           "label": "B",
           "text": "Archive"
         },
@@ -11786,14 +11920,15 @@
         "C"
       ],
       "choiceExplanations": {
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ archive/retention เหมาะกับข้อมูลที่ต้องเก็บนาน เข้าถึงไม่บ่อย และต้องคุมอายุการเก็บตามนโยบาย แต่โจทย์ต้องการ warm site/storage เตรียมบางส่วนไว้แล้ว กู้คืนได้เร็วปานกลางและต้นทุนต่ำกว่า hot",
-        "C": "ถูก เพราะ warm site/storage เตรียมบางส่วนไว้แล้ว กู้คืนได้เร็วปานกลางและต้นทุนต่ำกว่า hot",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ cold site/storage มี resource น้อยหรือไม่มีล่วงหน้า ต้นทุนต่ำแต่ใช้เวลาฟื้นตัวนานกว่า แต่โจทย์ต้องการ warm site/storage เตรียมบางส่วนไว้แล้ว กู้คืนได้เร็วปานกลางและต้นทุนต่ำกว่า hot"
+        "A": "Not the source PDF answer. The source answer is: Warm",
+        "B": "Not the source PDF answer. The source answer is: Warm",
+        "C": "Correct according to the source PDF answer strip: Warm",
+        "D": "Not the source PDF answer. The source answer is: Warm"
       },
       "ocrText": "A technician is configuring storage for an application that must be readily available and cost-effective. Which of the following storage types should the technician choose? Select one: B. C. D. Hot Archive Warm Cold",
       "answerOcrText": "The correct answer is: Warm",
       "media": [],
-      "explanation": "เฉลยคือ Warm เพราะ warm site/storage เตรียมบางส่วนไว้แล้ว กู้คืนได้เร็วปานกลางและต้นทุนต่ำกว่า hot"
+      "explanation": "The source PDF answer strip lists: Warm."
     },
     {
       "id": "cloud_quiz10_q016",
@@ -12350,7 +12485,11 @@
         },
         {
           "label": "B",
-          "text": "DLP ACL"
+          "text": "DLP"
+        },
+        {
+          "label": "C",
+          "text": "ACL"
         },
         {
           "label": "D",
@@ -12365,14 +12504,15 @@
         "A"
       ],
       "choiceExplanations": {
-        "A": "ถูก เพราะ WAF ป้องกันทราฟฟิกระดับเว็บแอป เช่น SQL injection หรือ XSS แต่ไม่ได้แทนการกำหนดสิทธิ์เครือข่ายทั่วไปเสมอไป",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ACL เป็นรายการกฎอนุญาต/ปฏิเสธการเข้าถึง เหมาะกับการคุมทราฟฟิกหรือสิทธิ์แบบระบุรายการ แต่โจทย์ต้องการ WAF ป้องกันทราฟฟิกระดับเว็บแอป เช่น SQL injection หรือ XSS แต่ไม่ได้แทนการกำหนดสิทธิ์เครือข่ายทั่วไปเสมอไป",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ IDS/IPS ใช้ตรวจจับหรือบล็อกพฤติกรรมโจมตีบนเครือข่าย แต่ไม่ใช่เครื่องมือกำหนดสิทธิ์การเข้าถึงตามตำแหน่งหรือกลุ่มผู้ใช้โดยตรง แต่โจทย์ต้องการ WAF ป้องกันทราฟฟิกระดับเว็บแอป เช่น SQL injection หรือ XSS แต่ไม่ได้แทนการกำหนดสิทธิ์เครือข่ายทั่วไปเสมอไป"
+        "A": "Correct according to the source PDF answer strip: WAF",
+        "B": "Not the source PDF answer. The source answer is: WAF",
+        "C": "Not the source PDF answer. The source answer is: WAF",
+        "D": "Not the source PDF answer. The source answer is: WAF"
       },
       "ocrText": "A cloud engineer is building a stock trading web application. The company's Chief Information Security Officer provides the engineer with a list of security requirements. The application must be protected from: • Bots • DDoS attacks • Top 10 web application CVEs Which of the following cloud services should the engineer deploy to meet these requirements? Select one. D. IDS A. B. WAF DLP ACL",
       "answerOcrText": "The correct answer is: WAF",
       "media": [],
-      "explanation": "เฉลยคือ WAF เพราะ WAF ป้องกันทราฟฟิกระดับเว็บแอป เช่น SQL injection หรือ XSS แต่ไม่ได้แทนการกำหนดสิทธิ์เครือข่ายทั่วไปเสมอไป"
+      "explanation": "The source PDF answer strip lists: WAF."
     },
     {
       "id": "cloud_quiz11_q009",
@@ -12883,6 +13023,10 @@
         {
           "label": "C",
           "text": "Regulations and availability"
+        },
+        {
+          "label": "D",
+          "text": "Vendor lock-in and refactoring"
         }
       ],
       "correctAnswerText": "Regulations and availability",
@@ -12893,14 +13037,15 @@
         "C"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ ข้อกำหนด regulatory บังคับวิธีจัดเก็บ ประมวลผล หรือปกป้องข้อมูลตามกฎหมาย/อุตสาหกรรม",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ ข้อกำหนด regulatory บังคับวิธีจัดเก็บ ประมวลผล หรือปกป้องข้อมูลตามกฎหมาย/อุตสาหกรรม",
-        "C": "ถูก เพราะ ข้อกำหนด regulatory บังคับวิธีจัดเก็บ ประมวลผล หรือปกป้องข้อมูลตามกฎหมาย/อุตสาหกรรม"
+        "A": "Not the source PDF answer. The source answer is: Regulations and availability",
+        "B": "Not the source PDF answer. The source answer is: Regulations and availability",
+        "C": "Correct according to the source PDF answer strip: Regulations and availability",
+        "D": "Not the source PDF answer. The source answer is: Regulations and availability"
       },
       "ocrText": "Which of the following best describes the key factors a financial service company should address when planning a cloud migration? Select one: A. B. C. Training and vendor support Management overhead and environment Regulations and availability",
       "answerOcrText": "rect answer is: Regulations and availability",
       "media": [],
-      "explanation": "เฉลยคือ Regulations and availability เพราะ ข้อกำหนด regulatory บังคับวิธีจัดเก็บ ประมวลผล หรือปกป้องข้อมูลตามกฎหมาย/อุตสาหกรรม"
+      "explanation": "The source PDF answer strip lists: Regulations and availability."
     },
     {
       "id": "cloud_quiz12_q001",
@@ -13290,6 +13435,10 @@
           "text": "Container"
         },
         {
+          "label": "C",
+          "text": "Serverless"
+        },
+        {
           "label": "D",
           "text": "Snapshot"
         }
@@ -13302,14 +13451,15 @@
         "B"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ cluster คือกลุ่ม node ที่ทำงานร่วมกันเพื่อรัน workload เช่น container orchestration แต่โจทย์ต้องการ container แพ็กแอปพร้อม dependency ให้รันได้สม่ำเสมอบน environment ต่าง ๆ โดยใช้ kernel ร่วมกับ host",
-        "B": "ถูก เพราะ container แพ็กแอปพร้อม dependency ให้รันได้สม่ำเสมอบน environment ต่าง ๆ โดยใช้ kernel ร่วมกับ host",
-        "D": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ snapshot บันทึกสถานะ point-in-time ของ volume หรือ VM เพื่อกู้คืนหรือ clone ได้รวดเร็ว แต่โจทย์ต้องการ container แพ็กแอปพร้อม dependency ให้รันได้สม่ำเสมอบน environment ต่าง ๆ โดยใช้ kernel ร่วมกับ host"
+        "A": "Not the source PDF answer. The source answer is: Container",
+        "B": "Correct according to the source PDF answer strip: Container",
+        "C": "Not the source PDF answer. The source answer is: Container",
+        "D": "Not the source PDF answer. The source answer is: Container"
       },
       "ocrText": "Which of the following compute services is the best for quick and easy provisioning? Select one: A. B. D. Cluster Container Snapshot",
       "answerOcrText": "The correct answer is: Container",
       "media": [],
-      "explanation": "เฉลยคือ Container เพราะ container แพ็กแอปพร้อม dependency ให้รันได้สม่ำเสมอบน environment ต่าง ๆ โดยใช้ kernel ร่วมกับ host"
+      "explanation": "The source PDF answer strip lists: Container."
     },
     {
       "id": "cloud_quiz12_q010",
@@ -13462,7 +13612,11 @@
         },
         {
           "label": "C",
-          "text": "Cloud bursting Obtaining additional hardware"
+          "text": "Cloud bursting"
+        },
+        {
+          "label": "D",
+          "text": "Obtaining additional hardware"
         }
       ],
       "correctAnswerText": "Cloud bursting",
@@ -13473,14 +13627,15 @@
         "C"
       ],
       "choiceExplanations": {
-        "A": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ ตัวเลือกนี้ตอบเงื่อนไขหลักของโจทย์ได้ตรงที่สุดเมื่อเทียบกับตัวเลือกอื่น โดยพิจารณาจากหน้าที่ของบริการ cloud, security, operations หรือ deployment ที่โจทย์ระบุ แต่โจทย์ต้องการ cloud bursting ใช้ public cloud รองรับโหลดส่วนเกินชั่วคราวจากระบบหลักเมื่อ demand พุ่งสูง",
-        "B": "ยังไม่เหมาะ เพราะตัวเลือกนี้เกี่ยวกับ autoscaling ปรับจำนวน resource อัตโนมัติตาม policy หรือ metric ที่กำหนด แต่โจทย์ต้องการ cloud bursting ใช้ public cloud รองรับโหลดส่วนเกินชั่วคราวจากระบบหลักเมื่อ demand พุ่งสูง",
-        "C": "ถูก เพราะ cloud bursting ใช้ public cloud รองรับโหลดส่วนเกินชั่วคราวจากระบบหลักเมื่อ demand พุ่งสูง"
+        "A": "Not the source PDF answer. The source answer is: Cloud bursting",
+        "B": "Not the source PDF answer. The source answer is: Cloud bursting",
+        "C": "Correct according to the source PDF answer strip: Cloud bursting",
+        "D": "Not the source PDF answer. The source answer is: Cloud bursting"
       },
       "ocrText": "Which of the following solutions is a cost-effective and flexible way to meet the demand of local computing resource requests? Select one: A. B. C. Increasing network bandwidth Autoscaling Cloud bursting Obtaining additional hardware",
       "answerOcrText": "The correct answer is: Cloud bursting",
       "media": [],
-      "explanation": "เฉลยคือ Cloud bursting เพราะ cloud bursting ใช้ public cloud รองรับโหลดส่วนเกินชั่วคราวจากระบบหลักเมื่อ demand พุ่งสูง"
+      "explanation": "The source PDF answer strip lists: Cloud bursting."
     }
   ],
   "explanationReferences": [
