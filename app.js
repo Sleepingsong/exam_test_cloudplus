@@ -338,25 +338,13 @@ function renderChoiceExplanations(item) {
   `;
 }
 
-function getDisplayLabels(item, logicalLabels) {
-  const choices = item.shuffledChoices || item.choices;
-  return logicalLabels.map(label => {
-    const choice = choices.find(c => c.label === label);
-    return choice ? (choice.displayLabel || choice.label) : label;
-  }).join(", ");
-}
-
 function showResult(item, correct) {
   const correctText = item.correctAnswerText || item.correctAnswers.join(", ");
   const explanation = item.explanation || "คำตอบนี้เหมาะที่สุดตามแนวคิดของหัวข้อที่โจทย์ถาม";
-  
-  const logicalSelected = [...(state.answers[answerKey(item)]?.selected || state.selected)];
-  const selectedText = getDisplayLabels(item, logicalSelected) || "-";
 
   els.resultBox.className = `result ${correct ? "ok" : "bad"}`;
   els.resultBox.innerHTML = `
     <h3>${correct ? "ตอบถูก" : "ยังไม่ถูก"}</h3>
-    <p><strong>คำตอบของคุณ:</strong> ${escapeHtml(selectedText)}</p>
     <p><strong>เฉลย:</strong> ${escapeHtml(correctText)}</p>
     <p>${escapeHtml(explanation)}</p>
     ${renderChoiceExplanations(item)}
