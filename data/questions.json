@@ -7491,7 +7491,7 @@
       "quiz": "Quiz 05",
       "number": 7,
       "sourcePdf": "cloud_quiz05.pdf",
-      "prompt": "Which of the following describes the main difference between public and private container repositories? Private container repository access requires authorization, while public repository access does not require authorization.",
+      "prompt": "Which of the following describes the main difference between public and private container repositories?",
       "mode": "single",
       "choices": [
         {
@@ -12432,7 +12432,7 @@
       "quiz": "Quiz 11",
       "number": 7,
       "sourcePdf": "cloud_quiz11.pdf",
-      "prompt": "mooels snotno Ine Cloua engineer select to meet mese requirements (",
+      "prompt": "A cloud engineer is selecting a model for a data center that will host a workload. The database must reside within the data center on the company's SAN solution. However, the workload will be hosted by a third-party vendor. Which of the following models should the cloud engineer select to meet these requirements?",
       "mode": "single",
       "choices": [
         {

@@ -362,9 +362,11 @@ MANUAL_PROMPT_FALLBACKS = {
     "cloud_quiz02_q014": "A junior cloud administrator was recently promoted to cloud administrator and has been added to the cloud administrator group. The cloud administrator group is the only one that can access the engineering VM. The new administrator unsuccessfully attempts to access the engineering VM. However, the other administrators can access it without issue. Which of the following is the best way to identify the root cause?",
     "cloud_quiz04_q007": "An on-premises data center is located in an earthquake-prone location. The workload consists of real-time, online transaction processing. Which of the following data protection strategies should be used to back up on-premises data to the cloud while also being cost effective?",
     "cloud_quiz04_q034": "An administrator needs to provide a backup solution for a cloud infrastructure that enables the resources to run from another data center in case of an outage. Connectivity to the backup data center is via a third-party, untrusted network. Which of the following is the most important feature required for this solution?",
+    "cloud_quiz05_q007": "Which of the following describes the main difference between public and private container repositories?",
     "cloud_quiz05_q013": "A systems administrator needs to configure a script that will monitor whether an application is healthy and stop the VM if an unsuccessful code is returned. Which of the following scripts should the systems administrator use to achieve this goal?",
     "cloud_quiz05_q023": "A newly configured VM fails to run application updates despite having internet access. The updates download automatically from a third-party network. Given the following output: dig +short apac.updateserver.net returns 38.102.218.7; dig +short na.updateserver.net returns request timeout. Which of the following troubleshooting steps would be best to take?",
     "cloud_quiz10_q007": "A cloud solutions architect wants to deploy a three-tier web application that requires the minimum amount of operational overhead. Which of the following is the best template given these requirements?",
+    "cloud_quiz11_q007": "A cloud engineer is selecting a model for a data center that will host a workload. The database must reside within the data center on the company's SAN solution. However, the workload will be hosted by a third-party vendor. Which of the following models should the cloud engineer select to meet these requirements?",
     "cloud_quiz12_q005": "A cloud solutions architect needs to deploy a simple, public-facing website with the following requirements: Cost-effective, highly available, self-healing, and secure. Which of the following is the most appropriate template to use?",
 }
 
@@ -610,6 +612,41 @@ def manual_adjustments(
     card_refs: list[CropRef],
     answer_refs: list[CropRef],
 ) -> None:
+    if quiz_id == "cloud_quiz05" and len(card_refs) >= 13 and len(page_paths) >= 3:
+        page2 = page_paths[1]
+        page3 = page_paths[2]
+        x2_bounds, _, _ = detect_runs(page2)
+        x3_bounds, _, _ = detect_runs(page3)
+        out = ASSET_QUESTION_DIR / "cloud_quiz05_manual_q013.png"
+        stack_page_crops(
+            [
+                (page2, x2_bounds, (3185, Image.open(page2).height)),
+                (page3, x3_bounds, (0, 1188)),
+            ],
+            out,
+        )
+        prompt = MANUAL_PROMPT_FALLBACKS["cloud_quiz05_q013"]
+        card_refs[12] = CropRef(
+            quiz_id,
+            2,
+            3185,
+            1188,
+            out,
+            f"{prompt} Select one: A. Option A B. Option B C. Option C D. Option D",
+            [
+                Line(prompt, 20, 20, 900, 24),
+                Line("Select one:", 20, 70, 120, 20),
+                Line("A.", 42, 110, 24, 20),
+                Line("Option A", 86, 110, 120, 20),
+                Line("B.", 42, 150, 24, 20),
+                Line("Option B", 86, 150, 120, 20),
+                Line("C.", 42, 190, 24, 20),
+                Line("Option C", 86, 190, 120, 20),
+                Line("D.", 42, 230, 24, 20),
+                Line("Option D", 86, 230, 120, 20),
+            ],
+        )
+
     if quiz_id == "cloud_quiz06" and len(answer_refs) == 15 and len(page_paths) >= 3:
         page3 = page_paths[2]
         x_bounds, _, _ = detect_runs(page3)
@@ -670,6 +707,41 @@ def manual_adjustments(
             ),
         )
         answer_refs[6].ocr_text = "The correct answer is: Option B"
+
+    if quiz_id == "cloud_quiz12" and len(card_refs) >= 5 and len(page_paths) >= 2:
+        page1 = page_paths[0]
+        page2 = page_paths[1]
+        x1_bounds, _, _ = detect_runs(page1)
+        x2_bounds, _, _ = detect_runs(page2)
+        out = ASSET_QUESTION_DIR / "cloud_quiz12_manual_q005.png"
+        stack_page_crops(
+            [
+                (page1, x1_bounds, (2835, Image.open(page1).height)),
+                (page2, x2_bounds, (0, 2760)),
+            ],
+            out,
+        )
+        prompt = MANUAL_PROMPT_FALLBACKS["cloud_quiz12_q005"]
+        card_refs[4] = CropRef(
+            quiz_id,
+            1,
+            2835,
+            2760,
+            out,
+            f"{prompt} Select one: A. Option A B. Option B C. Option C D. Option D",
+            [
+                Line(prompt, 20, 20, 900, 24),
+                Line("Select one:", 20, 70, 120, 20),
+                Line("A.", 42, 110, 24, 20),
+                Line("Option A", 86, 110, 120, 20),
+                Line("B.", 42, 150, 24, 20),
+                Line("Option B", 86, 150, 120, 20),
+                Line("C.", 42, 190, 24, 20),
+                Line("Option C", 86, 190, 120, 20),
+                Line("D.", 42, 230, 24, 20),
+                Line("Option D", 86, 230, 120, 20),
+            ],
+        )
 
 
 async def ocr_image(path: Path) -> tuple[str, list[Line]]:
@@ -883,9 +955,9 @@ def generate_manual_media_assets() -> None:
     crops = {
         "assets/media/cloud_quiz01_q008_options.png": ("assets/questions/cloud_quiz01_p02_c02.png", (18, 72, 650, 518)),
         "assets/media/cloud_quiz01_q039_options.png": ("assets/questions/cloud_quiz01_p07_c04.png", (18, 74, 415, 740)),
-        "assets/media/cloud_quiz05_q013_options.png": ("assets/questions/cloud_quiz05_p02_c07.png", (18, 86, 1120, 320)),
+        "assets/media/cloud_quiz05_q013_options.png": ("assets/questions/cloud_quiz05_manual_q013.png", (0, 0, 1120, 1515)),
         "assets/media/cloud_quiz10_q007_options.png": ("assets/questions/cloud_quiz10_manual_q007.png", (0, 118, 1120, 2475)),
-        "assets/media/cloud_quiz12_q005_options.png": ("assets/questions/cloud_quiz12_p01_c05.png", (18, 230, 1120, 520)),
+        "assets/media/cloud_quiz12_q005_options.png": ("assets/questions/cloud_quiz12_manual_q005.png", (0, 175, 1120, 2760)),
     }
     for dst, (src, box) in crops.items():
         src_path = ROOT / src
