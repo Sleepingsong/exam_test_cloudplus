@@ -7761,24 +7761,24 @@
       "choices": [
         {
           "label": "A",
-          "text": "Option A"
+          "text": "RESPONSE_CODE }\nstring APP_URL\nbool RESPONSE_CODE\nstring VM\nhealth checker (APP_URL, VM) {\nif [ http_probe (APP_URL) == 200] {\necho RESPONSE_CODE }\nelse{\nstop (VM)\necho"
         },
         {
           "label": "B",
-          "text": "Option B"
+          "text": "else{\necho\nstring APP_URL\nfloat RESPONSE_CODE\nstring VM\nhealth_checker (APP_URL, VM) {\nif [ http_probe (APP_URL) == 200] {\nstop (RESPONSE_CODE)\necho VM }\nstop (VM)\nRESPONSE CODE }"
         },
         {
           "label": "C",
-          "text": "Option C"
+          "text": "else{\necho\nstring APP_URL\nint RESPONSE CODE\nstring VM\nhealth checker (APP_URL, VM) {\nif [ http_probe (APP_URL) == 200] {\necho RESPONSE_CODE }\nstop (VM)\nRESPONSE_CODE }"
         },
         {
           "label": "D",
-          "text": "Option D"
+          "text": "else{\necho\nstring APP_URL\nint RESPONSE_CODE\nstring VM\nhealth_checker (APP_URL, VM) {\nif [ http_probe (VM) == 200] {\nstop (VM)\necho RESPONSE_CODE }\nRESPONSE CODE }"
         }
       ],
-      "correctAnswerText": "Option A",
+      "correctAnswerText": "RESPONSE_CODE }\nstring APP_URL\nbool RESPONSE_CODE\nstring VM\nhealth checker (APP_URL, VM) {\nif [ http_probe (APP_URL) == 200] {\necho RESPONSE_CODE }\nelse{\nstop (VM)\necho",
       "correctAnswers": [
-        "Option A"
+        "RESPONSE_CODE }\nstring APP_URL\nbool RESPONSE_CODE\nstring VM\nhealth checker (APP_URL, VM) {\nif [ http_probe (APP_URL) == 200] {\necho RESPONSE_CODE }\nelse{\nstop (VM)\necho"
       ],
       "correctLabels": [
         "A"

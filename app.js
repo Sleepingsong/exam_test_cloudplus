@@ -277,7 +277,7 @@ function renderChoices(item, locked) {
     if (locked && selectedLabels.has(choice.label) && !correctLabels.has(choice.label)) button.classList.add("wrong");
     if (limitReached && !selectedLabels.has(choice.label)) button.classList.add("limited");
     button.disabled = locked || (limitReached && !selectedLabels.has(choice.label));
-    button.innerHTML = `<span class="choice-label">${escapeHtml(choice.displayLabel || choice.label)}</span><span>${escapeHtml(choice.text || `Option ${choice.label}`)}</span>`;
+    button.innerHTML = `<span class="choice-label">${escapeHtml(choice.displayLabel || choice.label)}</span><span class="choice-text">${escapeHtml(choice.text || `Option ${choice.label}`)}</span>`;
     button.addEventListener("click", () => toggleChoice(item, choice.label));
     els.choiceList.appendChild(button);
   });
@@ -341,7 +341,7 @@ function renderChoiceExplanations(item) {
       const displayLabel = choice.displayLabel || choice.label;
       return `
         <li>
-          <strong>${escapeHtml(displayLabel)}. ${escapeHtml(choiceText)}</strong>
+          <strong>${escapeHtml(displayLabel)}. <span class="choice-text">${escapeHtml(choiceText)}</span></strong>
           <span>${escapeHtml(text)}</span>
         </li>
       `;

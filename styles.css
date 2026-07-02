@@ -486,6 +486,17 @@ input {
   font-weight: 800;
 }
 
+.choice-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.choice .choice-text,
+.result .choice-text {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  line-height: 1.45;
+}
+
 .result {
   margin-top: 18px;
   padding: 16px;

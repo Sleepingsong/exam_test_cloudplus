@@ -28,7 +28,7 @@ ASSET_ANSWER_DIR = TMP_DIR / "answer-crops"
 DATA_DIR = ROOT / "data"
 OUTPUT_JSON = DATA_DIR / "questions.json"
 
-PDF_PATTERN = re.compile(r"cloud_quiz(0[1-9]|1[0-2])\.pdf$", re.IGNORECASE)
+PDF_PATTERN = re.compile(r"cloud_quiz(0[1-9]|1[0-2]|_final)\.pdf$", re.IGNORECASE)
 OPTION_LABELS = tuple("ABCDEFGH")
 
 MANUAL_CHOICE_FALLBACKS = {
@@ -171,10 +171,10 @@ MANUAL_CHOICE_FALLBACKS = {
         ("D", "WAF"),
     ],
     "cloud_quiz05_q013": [
-        ("A", "Option A"),
-        ("B", "Option B"),
-        ("C", "Option C"),
-        ("D", "Option D"),
+        ("A", "RESPONSE_CODE }\nstring APP_URL\nbool RESPONSE_CODE\nstring VM\nhealth checker (APP_URL, VM) {\nif [ http_probe (APP_URL) == 200] {\necho RESPONSE_CODE }\nelse{\nstop (VM)\necho"),
+        ("B", "else{\necho\nstring APP_URL\nfloat RESPONSE_CODE\nstring VM\nhealth_checker (APP_URL, VM) {\nif [ http_probe (APP_URL) == 200] {\nstop (RESPONSE_CODE)\necho VM }\nstop (VM)\nRESPONSE CODE }"),
+        ("C", "else{\necho\nstring APP_URL\nint RESPONSE CODE\nstring VM\nhealth checker (APP_URL, VM) {\nif [ http_probe (APP_URL) == 200] {\necho RESPONSE_CODE }\nstop (VM)\nRESPONSE_CODE }"),
+        ("D", "else{\necho\nstring APP_URL\nint RESPONSE_CODE\nstring VM\nhealth_checker (APP_URL, VM) {\nif [ http_probe (VM) == 200] {\nstop (VM)\necho RESPONSE_CODE }\nRESPONSE CODE }"),
     ],
     "cloud_quiz05_q031": [
         ("A", "Resource tagging"),
@@ -352,7 +352,7 @@ MANUAL_LABEL_FALLBACKS = {
 }
 
 MANUAL_TEXT_FALLBACKS = {
-    "cloud_quiz05_q013": "Option A",
+    "cloud_quiz05_q013": "RESPONSE_CODE }\nstring APP_URL\nbool RESPONSE_CODE\nstring VM\nhealth checker (APP_URL, VM) {\nif [ http_probe (APP_URL) == 200] {\necho RESPONSE_CODE }\nelse{\nstop (VM)\necho",
     "cloud_quiz12_q005": "Option D",
 }
 
@@ -1068,6 +1068,12 @@ async def build() -> None:
     generate_manual_media_assets()
     apply_manual_label_fallbacks(questions)
     questions = dedupe_questions(questions)
+
+    questions = [
+        q for q in questions
+        if not (q["quizId"] == "cloud_quiz_final" and q["number"] in (1, 2))
+    ]
+
     for question in questions:
         question["explanation"] = build_question_explanation(question)
         question["choiceExplanations"] = {
@@ -1077,7 +1083,7 @@ async def build() -> None:
 
     payload = {
         "generatedFrom": [pdf.name for pdf in list_source_pdfs()],
-        "ignored": ["cloud_quiz_final.pdf"],
+        "ignored": [],
         "answerSource": "Correct answers are OCR-extracted from the visible answer strips in the source PDFs; answer images are not displayed in the web app.",
         "explanationSource": "Thai helper explanations are generated from vendor-neutral Cloud+ concepts, including NIST cloud characteristics/service models, CompTIA Cloud+ domains, and major cloud provider documentation. They explain the concept; the answer key still follows the source PDFs.",
         "explanationReferences": [
